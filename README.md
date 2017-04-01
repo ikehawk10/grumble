@@ -11,7 +11,7 @@ When you are ready to merge with the master branch you have two options:
 
 ONE: MERGE LOCALLY FIRST 
 
-Navigate back to the master branch clone using <b>git checkout master"]</b>. You can then use <b>git merge BRANCHNAME</b> to merge your branch with your local copy of the master. If there are any conflicts you can then go in and make any changes. Once any conflicts are resolved you can then git add, commit, and push to the origin master. 
+Navigate back to the master branch clone using <b>git checkout master</b>. You can then use <b>git merge BRANCHNAME</b> to merge your branch with your local copy of the master. If there are any conflicts you can then go in and make any changes. Once any conflicts are resolved you can then git add, commit, and push to the origin master. 
 
 
 TWO: CREATE A PULL REQUEST IN GITHUB
