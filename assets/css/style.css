@@ -7,30 +7,38 @@
 
 }
 
-
-body{
-	width: auto;
+*{
+	box-sizing: border-box;
 }
+body{
+	overflow-x: hidden;
+}
+
+header{
+	display: flex;
+
+}
+
 .logo{
 	 font-family: 'escafinahigh';
 	font-size:45px;
 	background-color: #FC913A;
 	color: #E1F5C4;
 	text-shadow: 2px 2px #6d4532;
-
-}
-
-header{
 	padding-left: 20px;
+
 }
+
 
 .tagline {
 	font-family: 'Fjalla One', sans-serif;
 	color: #E1F5C4;
-	font-size: 20px;
+	font-size: 22px;
 	text-shadow: 2px 2px #6d4532;
-	margin-left: -5px;
-	padding-top: 15px;
+	align-content: center;
+	padding-top: 10px;
+	padding-left: 15px;
+
 }
 
 .grumbleHeader{
