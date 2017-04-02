@@ -1,6 +1,36 @@
+@font-face {
+    font-family: 'escafinahigh';
+    src: url('escafina-high-webfont.woff2') format('woff2'),
+         url('escafina-high-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+body{
+	width: auto;
+}
 .logo{
+	 font-family: 'escafinahigh';
 	font-size:45px;
 	background-color: #FC913A;
+	color: #E1F5C4;
+	text-shadow: 2px 2px #6d4532;
+
+}
+
+header{
+	padding-left: 20px;
+}
+
+.tagline {
+	font-family: 'Fjalla One', sans-serif;
+	color: #E1F5C4;
+	font-size: 20px;
+	text-shadow: 2px 2px #6d4532;
+	margin-left: -5px;
+	padding-top: 15px;
 }
 
 .grumbleHeader{

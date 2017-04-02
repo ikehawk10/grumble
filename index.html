@@ -5,67 +5,63 @@
 	<title>GRUMBLE</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="row logo">
-	<header class="grumbleHeader">
-	<img class="col-md-2" src="http://placehold.it/100x50">
-	<h1 class="col-md-10 logo">GRUMBLE <small>Find Your Soul Plate</small></h1>
-	
+
+<div class="row grumbleHeader">
+	<header>
+		<h1 class="col-md-2 logo">Grumble</h1>
+		<h2 class="col-md-9 tagline">Find Your Soul Plate</h2>
 	</header>
 </div>
-<div class="container">
+
 <!--  button click to open first modal -->
 
-
+<div class="container">
 
 <!--1st modal - distance -->
 <div class= "modalContainer">
-<div class="well">Distance</div>
-	<form>
-		<div class="form-group">
-  			<label for="distance">Max distance</label>
-  			<select class="form-control" id="distance-select">
-    			<option>5 miles</option>
-    			<option>10 miles</option>
-    			<option>15 miles</option>
-    			
-  			</select>
-		</div>
+	<div class="well">Distance</div>
+		<form>
+			<div class="form-group">
+	  			<label for="distance">Max distance</label>
+	  			<select class="form-control" id="distance-select">
+	    			<option>5 miles</option>
+	    			<option>10 miles</option>
+	    			<option>15 miles</option>
+	    		</select>
+			</div>
 
 
-     	<div class="col-xs-3">
-  			<label for="ex2">From Zip Code</label>
-  			<input class="form-control" id="zip-input" type="text">
-		</div> 
-		<button type="submit" class="btn btn-warning" id = "distance-submit">Submit</button>
-</form>
+	     	<div class="col-xs-3">
+	  			<label for="ex2">From Zip Code</label>
+	  			<input class="form-control" id="zip-input" type="text">
+			</div> 
+			
+			<button type="submit" class="btn btn-warning" id = "distance-submit">Submit</button>
+		</form>
 </div>
 
 
 <!-- 2nd modal - Not in the mood for... -->
 <div class= "modalContainer">
-<div class="well">What do you NOT want to eat</div>
-<h2>Click to eliminate options</h2>
-<ul id = "elimination-list">
-<li>Italian</li>
-<li>Mexican</li>
-<li>Food Trucks</li>
-<li>Pizza</li>
-<li>American</li>
-<li>Seafood</li>
-<li>Asian Fusion</li>
-<li>Barbeque</li>
-<li>Deli</li>
-<li>Burgers</li>
-</ul>
-</ul>
-
-</div>
-
-	
+	<div class="well">What do you NOT want to eat</div>
+		<h2>Click to eliminate options</h2>
+			<ul id = "elimination-list">
+				<li>Italian</li>
+				<li>Mexican</li>
+				<li>Food Trucks</li>
+				<li>Pizza</li>
+				<li>American</li>
+				<li>Seafood</li>
+				<li>Asian Fusion</li>
+				<li>Barbeque</li>
+				<li>Deli</li>
+				<li>Burgers</li>
+			</ul>
+	</div>
 </div>
 
 
