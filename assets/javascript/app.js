@@ -27,12 +27,39 @@ var mileRadius;
 
 // });
 
+// $(document).click(function(){
+// 	$("#location").toggle("slide");
+// });
+
+$(document).ready(function(){
+	$("#location").hide();
+	$("#cuisines").hide();
+	$("#pricePoint").hide();
+});
+
+$("#start").on("click", function(event){
+	event.preventDefault();
+	$("#startScreen").toggle("slide");
+	$("#location").toggle("slide");
+	$("#location").show();
+
+});
+
+
+
 
 
 $("#distance-submit").on("click", function(event){
 	event.preventDefault();
 	userZIP = $("#zip-input").val().trim();
 	mileRadius = $("#distance-select").val();
+	$("#location").toggle("slide");
+	$("#cuisines").toggle("slide");
+	$("#cuisines").show();
+
+	// $("#location").toggle("slide");
+
+
 	console.log(userZIP);
 	console.log(mileRadius);
 
