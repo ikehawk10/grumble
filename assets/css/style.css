@@ -16,6 +16,7 @@ body{
 
 header{
 	display: flex;
+	align-items: center;
 
 }
 
@@ -35,8 +36,8 @@ header{
 	color: #E1F5C4;
 	font-size: 22px;
 	text-shadow: 2px 2px #6d4532;
-	align-content: center;
-	padding-top: 10px;
+	/*align-content: center;
+	padding-top: 10px;*/
 	padding-left: 15px;
 
 }
