@@ -17,34 +17,21 @@ function extractString(array){
     //return finalString
     return finalString;
   }
-
+//list of food options to select from
 var cuisineOptions = ["Italian", "American", "BBQ", "Burger", "Asian", "Seafood", "Pizza", "Breakfast", "Sandwich","Mexican"];
 var eliminated = new Array();
-    $('.type').click(function() {
-       eliminated.push($(this).text());
-       console.log(eliminated)
-            
+//when food button is clicked
+$('.type').click(function() {
+  //push the food type to a new array
+  eliminated.push($(this).text());
+  console.log(eliminated)
+  //create a new array with the food options that are left
   cuisineNotEliminated = $(cuisineOptions).not(eliminated).get();
   console.log(cuisineNotEliminated );
 
-  
-
-
-
-//SA
-  //array of things to NOT search, start as duplicate of cuisineOptions.
-  //if not desired, remove from array.
-
-
-
-
-
-
-
-
 });
 
-
+//zomato api call
 var Zomato = {
   init:function (key) {
     if (key!=null) {
@@ -79,6 +66,7 @@ var Zomato = {
       })
     }
   },
+  //main search parameters
   search: function(coords, cuisines, count, radius, scb, ecb){
     if (coords.latitude&&coords.longitude==null) {
       console.error("Enter the coordinates correctly");
@@ -98,39 +86,33 @@ var Zomato = {
           //first restaurant to be returned
         	var restaurantNameOne = response.restaurants[0].restaurant.name;
         	var restaurantPriceOne = response.restaurants[0].restaurant.price_range;
-        	var restaurantRatingOne = response.restaurants[0].restaurant.user_rating.aggregate_rating + " stars";
+        	var restaurantRatingOne = response.restaurants[0].restaurant.user_rating.aggregate_rating;
         	var restaurantLocationOne = response.restaurants[0].restaurant.location.address;
           var restaurantPhotoOne = response.restaurants[0].restaurant.featured_image;
 
-          $("#restaurant-one").html("<img src='" + restaurantPhotoOne + "' alt='image of " + cuisines + " food' />");
-          console.log(restaurantNameOne);
 
-          //second returned restaurant
+          //first returned restaurant
           var restaurantNameTwo = response.restaurants[1].restaurant.name;
           var restaurantPriceTwo = response.restaurants[1].restaurant.price_range;
-          var restaurantRatingTwo = response.restaurants[1].restaurant.user_rating.aggregate_rating + " stars";
+          var restaurantRatingTwo = response.restaurants[1].restaurant.user_rating.aggregate_rating;
           var restaurantLocationTwo = response.restaurants[1].restaurant.location.address;
           var restaurantPhotoTwo = response.restaurants[1].restaurant.featured_image;
 
-          $("#restaurant-two").html("<img src='" + restaurantPhotoTwo + "' alt='image of " + cuisines + " food' />");
 
-
-          //third returned restaurant
+          //second returned restaurant
           var restaurantNameThree = response.restaurants[2].restaurant.name;
           var restaurantPriceThree = response.restaurants[2].restaurant.price_range;
-          var restaurantRatingThree = response.restaurants[2].restaurant.user_rating.aggregate_rating + " stars";
+          var restaurantRatingThree = response.restaurants[2].restaurant.user_rating.aggregate_rating;
           var restaurantLocationThree = response.restaurants[2].restaurant.location.address;
           var restaurantPhotoThree = response.restaurants[2].restaurant.featured_image;
-          $("#restaurant-three").html("<img src='" + restaurantPhotoThree + "' alt='image of " + cuisines + " food' />");
 
         	
-          //fourth returned restaurant
+          //third returned restaurant
           var restaurantNameFour = response.restaurants[3].restaurant.name;
           var restaurantPriceFour = response.restaurants[3].restaurant.price_range;
-          var restaurantRatingFour = response.restaurants[3].restaurant.user_rating.aggregate_rating + " stars";
+          var restaurantRatingFour = response.restaurants[3].restaurant.user_rating.aggregate_rating;
           var restaurantLocationFour = response.restaurants[3].restaurant.location.address;
           var restaurantPhotoFour = response.restaurants[3].restaurant.featured_image;
-          $("#restaurant-four").html("<img src='" + restaurantPhotoFour + "' alt='image of " + cuisines + " food' />");
 
 
           //log each restaurant to the console with name, price, rating, and location
@@ -148,9 +130,6 @@ var Zomato = {
     }
   }
 }
-// $("#pricePoint-submit").on("click", function(){
-//   Zomato.search(coords, cuisines, count, radius, scb);
-// }) 
 
 
 //coordinates of location
