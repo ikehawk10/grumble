@@ -67,15 +67,15 @@ $("#distance-submit").on("click", function(event){
 
 var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
 
-$.ajax({
-	url: queryWeather,
-	method: "GET",
+// $.ajax({
+// 	url: queryWeather,
+// 	method: "GET",
 	
 
-}).done(function(weather) {
-	console.log(queryWeather);
-	console.log(weather);
-	});
+// }).done(function(weather) {
+// 	console.log(queryWeather);
+// 	console.log(weather);
+// 	});
 
 
 });

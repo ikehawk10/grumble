@@ -57,6 +57,18 @@ header{
 
 #cuisines, #location, #pricePoint{
 	width: 550px;
+	display: flex;
+	flex-direction: column;
+
+}
+
+.prompt{
+	text-align: center;
+}
+
+.prompt h1{
+	font-size: 25px;
+	margin: 20px;
 }
 
 #elimination-list{
