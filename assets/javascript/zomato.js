@@ -79,10 +79,14 @@ var Zomato = {
           lon:coords.longitude,
           count: count,
           q: extractString(cuisineNotEliminated),
-          radius: radius
+          radius: radius,
+          sort: "rating"
         },
         success:function (response) {
+          // $.each(response, function(){
 
+            
+          // })
           //first restaurant to be returned
         	var restaurantNameOne = response.restaurants[0].restaurant.name;
         	var restaurantPriceOne = response.restaurants[0].restaurant.price_range;
