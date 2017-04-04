@@ -78,6 +78,8 @@ $("#distance-submit").on("click", function(event){
 	console.log(userZIP);
 	console.log(mileRadius);
 
+ 
+
 
 
 var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
