@@ -1,8 +1,48 @@
+$(document).ready(function(){
 var zheader,version,url;
 var u = "https://developers.zomato.com/api/"//starter URL
-var cuisineOptions = ["American", "BBQ", "Burger", "Asian", "Seafood", "Pizza", "Breakfast", "Sandwich", "Mexican", "Chinese", "Steak"]
 // var cuisines = cuisineOptions.toString(); //type of foods to search for
-var cuisines = cuisineOptions[1];
+var cuisineNotEliminated;
+
+//create a function that takes in an array
+function extractString(array){
+  //set the initial value to a empty string
+    var finalString ="";
+    //loop through the given array 
+    array.forEach(function(prop){
+    //for each item in the array, add to finalString
+      finalString+= "," + prop;
+    });
+    console.log(finalString);
+    //return finalString
+    return finalString;
+  }
+
+var cuisineOptions = ["Italian", "American", "BBQ", "Burger", "Asian", "Seafood", "Pizza", "Breakfast", "Sandwich","Mexican"];
+var eliminated = new Array();
+    $('.type').click(function() {
+       eliminated.push($(this).text());
+       console.log(eliminated)
+            
+  cuisineNotEliminated = $(cuisineOptions).not(eliminated).get();
+  console.log(cuisineNotEliminated );
+
+  
+
+
+
+//SA
+  //array of things to NOT search, start as duplicate of cuisineOptions.
+  //if not desired, remove from array.
+
+
+
+
+
+
+
+
+});
 
 
 var Zomato = {
@@ -50,7 +90,7 @@ var Zomato = {
           lat:coords.latitude,
           lon:coords.longitude,
           count: count,
-          q: cuisines,
+          q: extractString(cuisineNotEliminated),
           radius: radius
         },
         success:function (response) {
@@ -63,6 +103,7 @@ var Zomato = {
           var restaurantPhotoOne = response.restaurants[0].restaurant.featured_image;
 
           $("#restaurant-one").html("<img src='" + restaurantPhotoOne + "' alt='image of " + cuisines + " food' />");
+          console.log(restaurantNameOne);
 
           //second returned restaurant
           var restaurantNameTwo = response.restaurants[1].restaurant.name;
@@ -107,6 +148,10 @@ var Zomato = {
     }
   }
 }
+// $("#pricePoint-submit").on("click", function(){
+//   Zomato.search(coords, cuisines, count, radius, scb);
+// }) 
+
 
 //coordinates of location
 var coords = {
@@ -114,13 +159,21 @@ var coords = {
 	longitude: "-97.739868"
 }
 
-var radius = 3218.69;
+var radius = 16093.44;
 //max results to return
-var count = 5;
+var count = 15;
 //API key
 Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 //call search options with location, cuisine, and count limit
-Zomato.search(coords, cuisines, count, radius, scb);
+
+  $("#pricePoint-submit").on("click", function(){
+    console.log(cuisineNotEliminated);
+    //extractString(cuisineNotEliminated);
+    Zomato.search(coords, cuisines, count, radius, scb);
+    
+}) 
+
+
 
 function scb(response) {
 }
@@ -128,3 +181,5 @@ function scb(response) {
 function ecb(){
   console.log("there was an error in zomato.js");
 }
+
+})
