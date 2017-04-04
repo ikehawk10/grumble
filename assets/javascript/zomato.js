@@ -90,48 +90,53 @@ var Zomato = {
           sort: "rating"
         },
         success:function (response) {
-          $.each(response, function(){
+            for (var i = 0; i < count; i++) {
+              if (response.restaurants[i].restaurant.price_range <= priceSelected){
+                console.log(response.restaurants[i].restaurant.name);
+                console.log(response.restaurants[i].restaurant.price_range);
+                console.log(response.restaurants[i].restaurant.user_rating.aggregate_rating)
+                console.log(response.restaurants[i].restaurant.url);
+                console.log(response.restaurants[i].restaurant.featured_image);
+              }
+            }
+         //  //first restaurant to be returned
+        	// var restaurantNameOne = response.restaurants[0].restaurant.name;
+        	// var restaurantPriceOne = response.restaurants[0].restaurant.price_range;
+        	// var restaurantRatingOne = response.restaurants[0].restaurant.user_rating.aggregate_rating;
+        	// var restaurantLocationOne = response.restaurants[0].restaurant.location.address;
+         //  var restaurantPhotoOne = response.restaurants[0].restaurant.featured_image;
 
 
-          })
-          //first restaurant to be returned
-        	var restaurantNameOne = response.restaurants[0].restaurant.name;
-        	var restaurantPriceOne = response.restaurants[0].restaurant.price_range;
-        	var restaurantRatingOne = response.restaurants[0].restaurant.user_rating.aggregate_rating;
-        	var restaurantLocationOne = response.restaurants[0].restaurant.location.address;
-          var restaurantPhotoOne = response.restaurants[0].restaurant.featured_image;
+         //  //first returned restaurant
+         //  var restaurantNameTwo = response.restaurants[1].restaurant.name;
+         //  var restaurantPriceTwo = response.restaurants[1].restaurant.price_range;
+         //  var restaurantRatingTwo = response.restaurants[1].restaurant.user_rating.aggregate_rating;
+         //  var restaurantLocationTwo = response.restaurants[1].restaurant.location.address;
+         //  var restaurantPhotoTwo = response.restaurants[1].restaurant.featured_image;
 
 
-          //first returned restaurant
-          var restaurantNameTwo = response.restaurants[1].restaurant.name;
-          var restaurantPriceTwo = response.restaurants[1].restaurant.price_range;
-          var restaurantRatingTwo = response.restaurants[1].restaurant.user_rating.aggregate_rating;
-          var restaurantLocationTwo = response.restaurants[1].restaurant.location.address;
-          var restaurantPhotoTwo = response.restaurants[1].restaurant.featured_image;
-
-
-          //second returned restaurant
-          var restaurantNameThree = response.restaurants[2].restaurant.name;
-          var restaurantPriceThree = response.restaurants[2].restaurant.price_range;
-          var restaurantRatingThree = response.restaurants[2].restaurant.user_rating.aggregate_rating;
-          var restaurantLocationThree = response.restaurants[2].restaurant.location.address;
-          var restaurantPhotoThree = response.restaurants[2].restaurant.featured_image;
+         //  //second returned restaurant
+         //  var restaurantNameThree = response.restaurants[2].restaurant.name;
+         //  var restaurantPriceThree = response.restaurants[2].restaurant.price_range;
+         //  var restaurantRatingThree = response.restaurants[2].restaurant.user_rating.aggregate_rating;
+         //  var restaurantLocationThree = response.restaurants[2].restaurant.location.address;
+         //  var restaurantPhotoThree = response.restaurants[2].restaurant.featured_image;
 
         	
-          //third returned restaurant
-          var restaurantNameFour = response.restaurants[3].restaurant.name;
-          var restaurantPriceFour = response.restaurants[3].restaurant.price_range;
-          var restaurantRatingFour = response.restaurants[3].restaurant.user_rating.aggregate_rating;
-          var restaurantLocationFour = response.restaurants[3].restaurant.location.address;
-          var restaurantPhotoFour = response.restaurants[3].restaurant.featured_image;
+         //  //third returned restaurant
+         //  var restaurantNameFour = response.restaurants[3].restaurant.name;
+         //  var restaurantPriceFour = response.restaurants[3].restaurant.price_range;
+         //  var restaurantRatingFour = response.restaurants[3].restaurant.user_rating.aggregate_rating;
+         //  var restaurantLocationFour = response.restaurants[3].restaurant.location.address;
+         //  var restaurantPhotoFour = response.restaurants[3].restaurant.featured_image;
 
 
           //log each restaurant to the console with name, price, rating, and location
-        	console.log(restaurantNameOne + " " + restaurantPriceOne + " " + restaurantRatingOne + " " + restaurantLocationOne);
-        	console.log(restaurantNameTwo + " " + restaurantPriceTwo + " " + restaurantRatingTwo + " " + restaurantLocationTwo);
-        	console.log(restaurantNameThree + " " + restaurantPriceThree + " " + restaurantRatingThree + " " + restaurantLocationThree);
-        	console.log(restaurantNameFour + " " + restaurantPriceFour + " " + restaurantRatingFour + " " + restaurantLocationFour);
-        	console.log(response)
+        	// console.log(restaurantNameOne + " " + restaurantPriceOne + " " + restaurantRatingOne + " " + restaurantLocationOne);
+        	// console.log(restaurantNameTwo + " " + restaurantPriceTwo + " " + restaurantRatingTwo + " " + restaurantLocationTwo);
+        	// console.log(restaurantNameThree + " " + restaurantPriceThree + " " + restaurantRatingThree + " " + restaurantLocationThree);
+        	// console.log(restaurantNameFour + " " + restaurantPriceFour + " " + restaurantRatingFour + " " + restaurantLocationFour);
+        	// console.log(response)
           scb(response);
         },
         error:function (res) {
@@ -151,7 +156,7 @@ var coords = {
 
 var radius = 16093.44;
 //max results to return
-var count = 15;
+var count = 5;
 //API key
 Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 //call search options with location, cuisine, and count limit
