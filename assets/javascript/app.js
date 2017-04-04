@@ -63,6 +63,23 @@ $("#distance-submit").on("click", function(event){
 	console.log(userZIP);
 	console.log(mileRadius);
 
+var cuisineOptions = ["Italian", "American", "BBQ", "Burger", "Asian", "Seafood", "Pizza", "Breakfast", "Sandwich","Mexican"];
+$( document ).ready(function() {
+            var eliminated= new Array();
+            $('.type').click(function() {
+                 eliminated.push($(this).html());
+                  console.log("eliminated contents = "+ eliminated)
+            
+ $( document ).ready(function(){
+var cuisineNotEliminated = $(cuisineOptions).not(eliminated).get();
+console.log("items not eliminated = " + cuisineNotEliminated );
+
+            });
+
+
+});
+       });
+
 
 
 var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
