@@ -26,12 +26,39 @@ var mileRadius;
 
 // });
 
+// $(document).click(function(){
+// 	$("#location").toggle("slide");
+// });
+
+$(document).ready(function(){
+	$("#location").hide();
+	$("#cuisines").hide();
+	$("#pricePoint").hide();
+});
+
+$("#start").on("click", function(event){
+	event.preventDefault();
+	$("#startScreen").toggle("slide");
+	$("#location").toggle("slide");
+	$("#location").show();
+
+});
+
+
+
 
 
 $("#distance-submit").on("click", function(event){
 	event.preventDefault();
 	userZIP = $("#zip-input").val().trim();
 	mileRadius = $("#distance-select").val();
+	$("#location").toggle("slide");
+	$("#cuisines").toggle("slide");
+	$("#cuisines").show();
+
+	// $("#location").toggle("slide");
+
+
 	console.log(userZIP);
 	console.log(mileRadius);
 
@@ -39,15 +66,15 @@ $("#distance-submit").on("click", function(event){
 
 var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
 
-$.ajax({
-	url: queryWeather,
-	method: "GET",
+// $.ajax({
+// 	url: queryWeather,
+// 	method: "GET",
 	
 
-}).done(function(weather) {
-	console.log(queryWeather);
-	console.log(weather);
-	});
+// }).done(function(weather) {
+// 	console.log(queryWeather);
+// 	console.log(weather);
+// 	});
 
 
 });

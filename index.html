@@ -4,26 +4,30 @@
 	<meta charset="UTF-8">
 	<title>GRUMBLE</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One|Raleway" rel="stylesheet">
 	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
-<div class="row grumbleHeader">
-	<header class="col-md-12">
+
+	<header class="grumbleHeader">
 		<h1 class="logo">Grumble</h1>
 		<h2 class="tagline">Find Your Soul Plate</h2>
 	</header>
-</div>
 
 <!--  button click to open first modal -->
 
-<div class="container">
+<div class="container positioner">
+	<div id="startScreen" class="positioner">
+		
+			<button id="start"><h1>Click to start!</h1></button>
+	</div>
+
 
 <!--1st modal - distance -->
-<div class= "modalContainer">
-	<div class="well">Distance</div>
+<div id="location" class= "positioner">
+	<h1>Distance</h1>
 		<form role="form">
 			<div class="form-group">
 	  			<label for="distance">Max distance</label>
@@ -46,23 +50,39 @@
 
 
 <!-- 2nd modal - Not in the mood for... -->
-<div class= "modalContainer">
-	<div class="well">What do you NOT want to eat</div>
-		<h2>Click to eliminate options</h2>
-			<ul id = "elimination-list">
-				<li>Italian</li>
-				<li>Mexican</li>
-				<li>Food Trucks</li>
-				<li>Pizza</li>
-				<li>American</li>
-				<li>Seafood</li>
-				<li>Asian Fusion</li>
-				<li>Barbeque</li>
-				<li>Deli</li>
-				<li>Burgers</li>
+<div id="cuisines" class= "positioner">
+	<div class="prompt">
+		<h1>What do you NOT want to eat?</h1>
+			<h2>Click to eliminate options</h2>
+				<ul id = "elimination-list">
+					<li>Italian</li>
+					<li>Mexican</li>
+					<li>Food Trucks</li>
+					<li>Pizza</li>
+					<li>American</li>
+					<li>Seafood</li>
+					<li>Asian Fusion</li>
+					<li>Barbeque</li>
+					<li>Deli</li>
+					<li>Burgers</li>
+				</ul>
+	</div>
+</div>
+
+
+<div id="pricePoint" class= "positioner">
+	<h1>How much do you want to spend?</h1>
+			<ul id = "dollaSigns">
+				<li>$</li>
+				<li>$$</li>
+				<li>$$$</li>
+				<li>$$$$</li>
 			</ul>
 	</div>
 </div>
+
+
+
 <div class="food-photos">
 	<div id="restaurant-one">
 	</div>
@@ -72,6 +92,7 @@
 	</div>
 	<div id="restaurant-four">
 	</div>
+
 </div>
 
 
