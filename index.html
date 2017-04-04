@@ -18,17 +18,44 @@
 
 <!--  button click to open first modal -->
 
-<div class="container positioner">
-	<div id="startScreen" class="positioner">
-		
-			<button id="start"><h1>Click to start!</h1></button>
+
+	<div id="slideshow">
+	
+		<img src="assets/images/b1.jpg" class="bgM"/>
+		<img src="assets/images/b2.jpg" class="bgM"/>
+		<img src="assets/images/b3.jpg" class="bgM"/>
+		<img src="assets/images/b4.jpg" class="bgM"/>
+		<img src="assets/images/b5.jpg" class="bgM"/>
+		<img src="assets/images/b6.jpg" class="bgM"/>
+		<img src="assets/images/b7.jpg" class="bgM"/>
+		<img src="assets/images/b8.jpg" class="bgM"/>
+		<img src="assets/images/b9.jpg" class="bgM"/>
+		<img src="assets/images/b10.jpg" class="bgM"/>
+		<img src="assets/images/b11.jpeg" class="bgM"/>
+		<img src="assets/images/b12.jpg" class="bgM"/>
+		<img src="assets/images/b13.jpg" class="bgM"/>
+
 	</div>
+
+	
+		<div id="startScreen" class="aligner">
+			
+				<div id="start" class="aligner-item"><h1>Click to start!</h1></div>
+		</div>
+	
+
+
+
 
 
 <!--1st modal - distance -->
-<div id="location" class= "positioner">
-	<div class="well">Distance</div>
+<div id="location" class= "aligner">
+	
 		<form role="form">
+			<h1 class="prompt">How far are you willing to go?</h1>
+			<br>
+			<br>
+			<br>
 			<div class="form-group">
 	  			<label for="distance">Max distance</label>
 	  			<select class="form-control" id="distance-select">
@@ -64,31 +91,72 @@
 				<li class= "type">BBQ</li>
 				<li class= "type">Sandwich</li>
 				<li class= "type">Burger</li>
-			</ul>
-	</div>
+  </ul>
+			
+			<button type="submit" class="btn btn-warning" id="cuisines-submit">Submit</button>	
+</div>
 
 
-<div id="pricePoint" class= "positioner">
-	<div class="well">How much do you want to spend?</div>
-			<ul id = "dollaSigns">
+
+<div id="pricePoint" class= "aligner">
+	<h1 class="prompt">How much do you want to spend?</h1>
+			<ul id = "dollaSigns" class="aligner-item">
 				<li>$</li>
 				<li>$$</li>
 				<li>$$$</li>
 				<li>$$$$</li>
 			</ul>
+		<button type="submit" class="btn btn-warning" id="pricePoint-submit">Submit</button>
+
+</div>
+
+<div id="results" class="aligner">
+	<div id="result1">
+
 	</div>
+	
+
+	<div id="result2">
+
+	</div>
+
+
+	<div id="result3">
+
+	</div>
+	
 </div>
 
+<div class="food-photos">
+	<div id="restaurant-one">
+	</div>
+	<div id="restaurant-two">
+	</div>
+	<div id="restaurant-three">
+	</div>
+	<div id="restaurant-four">
+	</div>
+
 </div>
 
 
+<div
 
 
-<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+
+
+
+
+
+
+
+<!-- <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/jquery.cycle.lite.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script> -->
 <script src="assets/javascript/app.js"></script>
 </body>
 </html>
