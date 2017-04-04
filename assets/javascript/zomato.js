@@ -2,7 +2,7 @@ var zheader,version,url;
 var u = "https://developers.zomato.com/api/"//starter URL
 var cuisineOptions = ["American", "BBQ", "Burger", "Asian", "Seafood", "Pizza", "Breakfast", "Sandwich", "Mexican", "Chinese", "Steak"]
 // var cuisines = cuisineOptions.toString(); //type of foods to search for
-var cuisines = cuisineOptions.toString();
+var cuisines = cuisineOptions[1];
 
 
 var Zomato = {
@@ -62,7 +62,7 @@ var Zomato = {
         	var restaurantLocationOne = response.restaurants[0].restaurant.location.address;
           var restaurantPhotoOne = response.restaurants[0].restaurant.featured_image;
 
-          $("#restaurant-one").html("<img src='" + restaurantPhotoOne + "' alt='image of food' />");
+          $("#restaurant-one").html("<img src='" + restaurantPhotoOne + "' alt='image of " + cuisines + " food' />");
 
           //second returned restaurant
           var restaurantNameTwo = response.restaurants[1].restaurant.name;
@@ -71,7 +71,7 @@ var Zomato = {
           var restaurantLocationTwo = response.restaurants[1].restaurant.location.address;
           var restaurantPhotoTwo = response.restaurants[1].restaurant.featured_image;
 
-          $("#restaurant-two").html("<img src='" + restaurantPhotoTwo + "' alt='image of food' />");
+          $("#restaurant-two").html("<img src='" + restaurantPhotoTwo + "' alt='image of " + cuisines + " food' />");
 
 
           //third returned restaurant
@@ -80,7 +80,7 @@ var Zomato = {
           var restaurantRatingThree = response.restaurants[2].restaurant.user_rating.aggregate_rating + " stars";
           var restaurantLocationThree = response.restaurants[2].restaurant.location.address;
           var restaurantPhotoThree = response.restaurants[2].restaurant.featured_image;
-          $("#restaurant-three").html("<img src='" + restaurantPhotoThree + "' alt='image of food' />");
+          $("#restaurant-three").html("<img src='" + restaurantPhotoThree + "' alt='image of " + cuisines + " food' />");
 
         	
           //fourth returned restaurant
@@ -89,7 +89,7 @@ var Zomato = {
           var restaurantRatingFour = response.restaurants[3].restaurant.user_rating.aggregate_rating + " stars";
           var restaurantLocationFour = response.restaurants[3].restaurant.location.address;
           var restaurantPhotoFour = response.restaurants[3].restaurant.featured_image;
-          $("#restaurant-four").html("<img src='" + restaurantPhotoFour + "' alt='image of food' />");
+          $("#restaurant-four").html("<img src='" + restaurantPhotoFour + "' alt='image of " + cuisines + " food' />");
 
 
           //log each restaurant to the console with name, price, rating, and location
@@ -110,8 +110,8 @@ var Zomato = {
 
 //coordinates of location
 var coords = {
-	latitude: "30.304020",
-	longitude: "-97.718652"
+	latitude: "30.232300",
+	longitude: "-97.739868"
 }
 
 var radius = 3218.69;
