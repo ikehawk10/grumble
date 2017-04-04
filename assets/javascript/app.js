@@ -93,6 +93,12 @@ var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/
 
 });
 
+$("#cuisines-submit").on("click", function(event){
+	event.preventDefault();
+	$("#cuisines").toggle("slide");
+	$("#pricePoint").toggle("slide");
+	$("#pricePoint").show();
+})
 
 
 

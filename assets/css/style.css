@@ -59,6 +59,14 @@ header{
 
 }
 
+.alignResults{
+	display:flex;
+	height: 550px;
+	justify-content: space-between;
+	
+
+}
+
 .aligner-item{
 	max-width: 30%;
 }
