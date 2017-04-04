@@ -4,6 +4,13 @@ var u = "https://developers.zomato.com/api/"//starter URL
 // var cuisines = cuisineOptions.toString(); //type of foods to search for
 var cuisineNotEliminated;
 
+//user price assigned to an array
+var priceSelected = new Array();
+  $('.price').click(function() {
+     priceSelected.push($(this).val());
+     console.log(priceSelected);
+})
+
 //create a function that takes in an array
 function extractString(array){
   //set the initial value to a empty string
@@ -83,10 +90,10 @@ var Zomato = {
           sort: "rating"
         },
         success:function (response) {
-          // $.each(response, function(){
+          $.each(response, function(){
 
-            
-          // })
+
+          })
           //first restaurant to be returned
         	var restaurantNameOne = response.restaurants[0].restaurant.name;
         	var restaurantPriceOne = response.restaurants[0].restaurant.price_range;
