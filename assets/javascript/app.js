@@ -102,9 +102,14 @@ $("#cuisines-submit").on("click", function(event){
 	$("#cuisines").toggle("slide");
 	$("#pricePoint").toggle("slide");
 	$("#pricePoint").show();
-})
+});
 
-
+$("#pricePoint-submit").on("click", function(event){
+	event.preventDefault();
+	$("#pricePoint").toggle("slide");
+	$("#results").toggle("slide");
+	$("#results").show();
+});
 
 
 
