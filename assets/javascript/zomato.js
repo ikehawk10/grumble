@@ -92,13 +92,40 @@ var Zomato = {
         success:function (response) {
             for (var i = 0; i < count; i++) {
               if (response.restaurants[i].restaurant.price_range <= priceSelected){
+                
+                if(i === 0) {
+                  $("#result1").append("<h1 class='restaurant-title'>Title: " + response.restaurants[i].restaurant.name + "</h1>");
+                  $("#result1").append("<h3 class='restaurant-price'>Price for Two: " + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
+                  $("#result1").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
+                  $("#result1").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'/>");
+                }
+                if (i === 1){
+                  $("#result2").append("<h1 class='restaurant-title'>Title: " + response.restaurants[i].restaurant.name + "</h1>");
+                  $("#result2").append("<h3 class='restaurant-price'>Price for Two: " + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
+                  $("#result2").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
+                  $("#result2").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'/>");
+                }
+                if (i === 2) {
+                  $("#result3").append("<h1 class='restaurant-title'>Title: " + response.restaurants[i].restaurant.name + "</h1>");
+                  $("#result3").append("<h3 class='restaurant-price'>Price for Two: " + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
+                  $("#result3").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
+                  $("#result3").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'/>");
+                }
+                
+              }
+            }
+
+            for (var i = 0; i < 3; i++) {
+              if (response.restaurants[i].restaurant.price_range <= priceSelected){
+                
                 console.log(response.restaurants[i].restaurant.name);
-                console.log(response.restaurants[i].restaurant.price_range);
+                console.log(response.restaurants[i].restaurant.average_cost_for_two);
                 console.log(response.restaurants[i].restaurant.user_rating.aggregate_rating)
-                console.log(response.restaurants[i].restaurant.url);
                 console.log(response.restaurants[i].restaurant.featured_image);
               }
             }
+
+
          //  //first restaurant to be returned
         	// var restaurantNameOne = response.restaurants[0].restaurant.name;
         	// var restaurantPriceOne = response.restaurants[0].restaurant.price_range;
