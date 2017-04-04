@@ -2,7 +2,7 @@ var zheader,version,url;
 var u = "https://developers.zomato.com/api/"//starter URL
 var cuisineOptions = ["American", "BBQ", "Burger", "Asian", "Seafood", "Pizza", "Breakfast", "Sandwich", "Mexican", "Chinese", "Steak"]
 // var cuisines = cuisineOptions.toString(); //type of foods to search for
-var cuisines = "chinese";
+var cuisines = cuisineOptions.toString();
 
 
 var Zomato = {
@@ -60,24 +60,36 @@ var Zomato = {
         	var restaurantPriceOne = response.restaurants[0].restaurant.price_range;
         	var restaurantRatingOne = response.restaurants[0].restaurant.user_rating.aggregate_rating + " stars";
         	var restaurantLocationOne = response.restaurants[0].restaurant.location.address;
+          var restaurantPhotoOne = response.restaurants[0].restaurant.featured_image;
+
+          $("#restaurant-one").html("<img src='" + restaurantPhotoOne + "' alt='image of food' />");
 
           //second returned restaurant
           var restaurantNameTwo = response.restaurants[1].restaurant.name;
           var restaurantPriceTwo = response.restaurants[1].restaurant.price_range;
           var restaurantRatingTwo = response.restaurants[1].restaurant.user_rating.aggregate_rating + " stars";
           var restaurantLocationTwo = response.restaurants[1].restaurant.location.address;
+          var restaurantPhotoTwo = response.restaurants[1].restaurant.featured_image;
+
+          $("#restaurant-two").html("<img src='" + restaurantPhotoTwo + "' alt='image of food' />");
+
 
           //third returned restaurant
           var restaurantNameThree = response.restaurants[2].restaurant.name;
           var restaurantPriceThree = response.restaurants[2].restaurant.price_range;
           var restaurantRatingThree = response.restaurants[2].restaurant.user_rating.aggregate_rating + " stars";
           var restaurantLocationThree = response.restaurants[2].restaurant.location.address;
+          var restaurantPhotoThree = response.restaurants[2].restaurant.featured_image;
+          $("#restaurant-three").html("<img src='" + restaurantPhotoThree + "' alt='image of food' />");
+
         	
           //fourth returned restaurant
           var restaurantNameFour = response.restaurants[3].restaurant.name;
           var restaurantPriceFour = response.restaurants[3].restaurant.price_range;
           var restaurantRatingFour = response.restaurants[3].restaurant.user_rating.aggregate_rating + " stars";
           var restaurantLocationFour = response.restaurants[3].restaurant.location.address;
+          var restaurantPhotoFour = response.restaurants[3].restaurant.featured_image;
+          $("#restaurant-four").html("<img src='" + restaurantPhotoFour + "' alt='image of food' />");
 
 
           //log each restaurant to the console with name, price, rating, and location
