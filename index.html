@@ -50,15 +50,16 @@
 
 <!--1st modal - distance -->
 <div id="location" class= "aligner">
-	
+	<div id="locationInfo">
 		<form role="form">
-			<h1 class="prompt">How far are you willing to go?</h1>
+			<h1 id="howFar" class="prompt">How far are you willing to go?</h1>
 			<br>
 			<br>
 			<br>
 			<div class="form-group">
 	  			<label for="distance">Max distance</label>
 	  			<select class="form-control" id="distance-select">
+	    			<option>1 mile</option>
 	    			<option>5 miles</option>
 	    			<option>10 miles</option>
 	    			<option>15 miles</option>
@@ -73,41 +74,52 @@
 
 			<button type="submit" class="btn btn-warning" id="distance-submit">Submit</button>
 		</form>
+	</div>
 </div>
 
 
 <!-- 2nd modal - Not in the mood for... -->
-<div id="cuisines" class= "positioner">
-	<div class="well">What do you NOT want to eat?</div>
-		<h2>Click to eliminate options</h2>
-			<ul id = "elimination-list">
-				<li class= "type">Italian</li>
-				<li class= "type">Mexican</li>
-				<li class= "type">Breakfast</li>
-				<li class= "type">Pizza</li>
-				<li class= "type">American</li>
-				<li class= "type">Seafood</li>
-				<li class= "type">Asian</li>
-				<li class= "type">BBQ</li>
-				<li class= "type">Sandwich</li>
-				<li class= "type">Burger</li>
-  			</ul>
-			
-			<button type="submit" class="btn btn-warning" id="cuisines-submit">Submit</button>	
-</div>
+
+
+	<div id="cuisines" class="aligner">
+
+		<div id="cuisinesInfo">
+			<h1 id="notWant" class="promptAlt">What do you NOT want to eat?</h1>
+				<h2>Click to eliminate options</h2>
+				<br>
+				<br>
+					<ul id = "elimination-list">
+						<li>Italian</li>
+						<li>Mexican</li>
+						<li>Food Trucks</li>
+						<li>Pizza</li>
+						<li>American</li>
+						<li>Seafood</li>
+						<li>Asian Fusion</li>
+						<li>Barbeque</li>
+						<li>Deli</li>
+						<li>Burgers</li>
+					</ul>
+				
+				<button type="submit" class="btn btn-warning" id="cuisines-submit">Submit</button>	
+		</div>
+	</div>
+=======
+
 
 
 
 <div id="pricePoint" class= "aligner">
-	<h1 class="prompt">How much do you want to spend?</h1>
-			<ul id = "dollaSigns" class="aligner-item">
-				<li>$</li>
-				<li>$$</li>
-				<li>$$$</li>
-				<li>$$$$</li>
-			</ul>
-		<button type="submit" class="btn btn-warning" id="pricePoint-submit">Submit</button>
-
+	<div id="priceInfo">
+		<h1 id="howMuch" class="prompt">How much do you want to spend?</h1>
+				<ul id = "dollaSigns">
+					<li>$</li>
+					<li>$$</li>
+					<li>$$$</li>
+					<li>$$$$</li>
+				</ul>
+			<button type="submit" class="btn btn-warning" id="pricePoint-submit">Submit</button>
+	</div>
 </div>
 
 <div id="results" class="aligner">
@@ -126,6 +138,8 @@
 	</div>
 	
 </div>
+
+
 
 
 

@@ -34,7 +34,9 @@ $(document).ready(function(){
 	$("#location").hide();
 	$("#cuisines").hide();
 	$("#pricePoint").hide();
+	$("#results").hide();
 	$(".food-photos").hide();
+
 	// $("#slideshow").hide();
 });
 
@@ -43,7 +45,7 @@ $("#start").on("click", function(event){
 	$("#startScreen").toggle("slide");
 	$("#location").toggle("slide");
 	$("#location").show();
-	// $("#slideshow").hide();
+	$("#slideshow").hide();
 
 });
 
