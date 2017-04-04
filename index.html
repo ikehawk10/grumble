@@ -18,17 +18,44 @@
 
 <!--  button click to open first modal -->
 
-<div class="container positioner">
-	<div id="startScreen" class="positioner">
-		
-			<button id="start"><h1>Click to start!</h1></button>
+
+	<div id="slideshow">
+	
+		<img src="assets/images/b1.jpg" class="bgM"/>
+		<img src="assets/images/b2.jpg" class="bgM"/>
+		<img src="assets/images/b3.jpg" class="bgM"/>
+		<img src="assets/images/b4.jpg" class="bgM"/>
+		<img src="assets/images/b5.jpg" class="bgM"/>
+		<img src="assets/images/b6.jpg" class="bgM"/>
+		<img src="assets/images/b7.jpg" class="bgM"/>
+		<img src="assets/images/b8.jpg" class="bgM"/>
+		<img src="assets/images/b9.jpg" class="bgM"/>
+		<img src="assets/images/b10.jpg" class="bgM"/>
+		<img src="assets/images/b11.jpeg" class="bgM"/>
+		<img src="assets/images/b12.jpg" class="bgM"/>
+		<img src="assets/images/b13.jpg" class="bgM"/>
+
 	</div>
+
+	
+		<div id="startScreen" class="aligner">
+			
+				<div id="start" class="aligner-item"><h1>Click to start!</h1></div>
+		</div>
+	
+
+
+
 
 
 <!--1st modal - distance -->
-<div id="location" class= "positioner">
-	<h1>Distance</h1>
+<div id="location" class= "aligner">
+	
 		<form role="form">
+			<h1 class="prompt">How far are you willing to go?</h1>
+			<br>
+			<br>
+			<br>
 			<div class="form-group">
 	  			<label for="distance">Max distance</label>
 	  			<select class="form-control" id="distance-select">
@@ -50,10 +77,12 @@
 
 
 <!-- 2nd modal - Not in the mood for... -->
-<div id="cuisines" class= "positioner">
-	<div class="prompt">
-		<h1>What do you NOT want to eat?</h1>
+
+	<div id="cuisines" class="aligner">
+		<h1 class="prompt">What do you NOT want to eat?</h1>
 			<h2>Click to eliminate options</h2>
+			<br>
+			<br>
 				<ul id = "elimination-list">
 					<li>Italian</li>
 					<li>Mexican</li>
@@ -67,21 +96,18 @@
 					<li>Burgers</li>
 				</ul>
 	</div>
-</div>
 
 
-<div id="pricePoint" class= "positioner">
-	<h1>How much do you want to spend?</h1>
-			<ul id = "dollaSigns">
+
+<div id="pricePoint" class= "aligner">
+	<h1 class="prompt">How much do you want to spend?</h1>
+			<ul id = "dollaSigns" class="aligner-item">
 				<li>$</li>
 				<li>$$</li>
 				<li>$$$</li>
 				<li>$$$$</li>
 			</ul>
 	</div>
-</div>
-
-
 
 <div class="food-photos">
 	<div id="restaurant-one">
@@ -96,14 +122,23 @@
 </div>
 
 
+<div
 
 
-<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
+
+
+
+
+
+
+
+<!-- <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="assets/javascript/zomato.js" type="text/javascript"></script>
+  <script type="text/javascript" src="assets/javascript/jquery.cycle.lite.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script> -->
 <script src="assets/javascript/app.js"></script>
 </body>
 </html>
