@@ -3,6 +3,7 @@ var zheader,version,url;
 var u = "https://developers.zomato.com/api/"//starter URL
 // var cuisines = cuisineOptions.toString(); //type of foods to search for
 var cuisineNotEliminated;
+var restaurantResults = [];
 
 //user price assigned to an array
 var priceSelected = new Array();
@@ -90,9 +91,11 @@ var Zomato = {
           sort: "rating"
         },
         success:function (response) {
+          
             for (var i = 0; i < count; i++) {
-              if (response.restaurants[i].restaurant.price_range <= priceSelected){
-                
+              if (response.restaurants[i].restaurant.featured_image && response.restaurants[i].restaurant.price_range <= priceSelected) {
+                restaurantResults.push(response.restaurants[i]);
+                console.log(restaurantResults);
                 if(i === 0) {
 
                   $("#result1").append("<img class='restaurant-image' src='" + response.restaurants[i].restaurant.featured_image + "'/>");
@@ -101,9 +104,6 @@ var Zomato = {
                   $("#result1").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
                   $("#result1").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
 
-                  
-
-                  // $("#result1").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'alt= photo of " + response.restaurants[i].restaurant.name + "/>");
 
                 }
                 if (i === 1){
@@ -114,10 +114,6 @@ var Zomato = {
                   $("#result2").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
                   $("#result2").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
 
-              
-
-                  // $("#result2").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'alt= photo of " + response.restaurants[i].restaurant.name + "/>");
-
                 }
                 if (i === 2) {
 
@@ -126,27 +122,11 @@ var Zomato = {
                   $("#result3").append("<h1 class='restaurant-title'>" + response.restaurants[i].restaurant.name + "</h1>");
                   $("#result3").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
                   $("#result3").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
-
-               
-
-                  // $("#result3").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'alt= photo of " + response.restaurants[i].restaurant.name + "/>");
-
                 }
-                
+
               }
             }
-
-            for (var i = 0; i < 3; i++) {
-              if (response.restaurants[i].restaurant.price_range <= priceSelected){
                 
-                console.log(response.restaurants[i].restaurant.name);
-                console.log(response.restaurants[i].restaurant.average_cost_for_two);
-                console.log(response.restaurants[i].restaurant.user_rating.aggregate_rating)
-                console.log(response.restaurants[i].restaurant.featured_image);
-                console.log(response);
-              }
-            }
-
           scb(response);
         },
         error:function (res) {
@@ -173,6 +153,7 @@ Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 
   $("#pricePoint-submit").on("click", function(){
     Zomato.search(coords, cuisines, count, radius, scb);
+    console.log(priceSelected.toString());
     
 }) 
 
