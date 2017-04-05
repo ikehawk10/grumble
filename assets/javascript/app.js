@@ -112,6 +112,17 @@ $("#pricePoint-submit").on("click", function(event){
 });
 
 
+$("#flip1").on("click", function(){
+	$(this).toggleClass("flip-container");
+});
+
+$("#flip2").on("click", function(){
+	$(this).toggleClass("flip-container");
+});
+
+$("#flip3").on("click", function(){
+	$(this).toggleClass("flip-container");
+});
 
 
 

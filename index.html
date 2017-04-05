@@ -56,7 +56,7 @@
 			<br>
 			<br>
 			<div class="form-group">
-	  			<label for="distance">Max distance</label>
+	  			<label for="distance">Max Distance: </label>
 	  			<select class="form-control" id="distance-select">
 	    			<option>1 mile</option>
 	    			<option>5 miles</option>
@@ -65,13 +65,19 @@
 	    		</select>
 			</div>
 
+			<br>
+			<br>
+			<br>
 
-	     	<div class="col-xs-3">
-	  			<label for="ex2">From Zip Code</label>
+	     	<div class="col-xs-12">
+	  			<label for="ex2">From Zip Code: </label>
 	  			<input class="form-control" id="zip-input" type="text">
 			</div> 
+			<br>
+			<div class="buttons">
+			<button type="submit" class="btn btn-submit btn-lg " id="distance-submit">Submit</button>
 
-			<button type="submit" class="btn btn-warning" id="distance-submit">Submit</button>
+			</div>
 		</form>
 	</div>
 </div>
@@ -84,23 +90,26 @@
 
 		<div id="cuisinesInfo">
 			<h1 id="notWant" class="promptAlt">What do you NOT want to eat?</h1>
-				<h2>Click to eliminate options</h2>
+				<h2>Pick 3 to eliminate</h2>
 				<br>
 				<br>
 					<ul id = "elimination-list">
-						<li class="type">Italian</li>
-						<li class="type">Mexican</li>
-						<li class="type">Breakfast</li>
-						<li class="type">Pizza</li>
-						<li class="type">American</li>
-						<li class="type">Seafood</li>
-						<li class="type">Asian</li>
-						<li class="type">BBQ</li>
-						<li class="type">Sandwich</li>
-						<li class="type">Burger</li>
+						<li class="type picked">Italian</li>
+						<li class="type picked">Mexican</li>
+						<li class="type picked">Breakfast</li>
+						<li class="type picked">Pizza</li>
+						<li class="type picked">American</li>
+						<li class="type picked">Seafood</li>
+						<li class="type picked">Asian</li>
+						<li class="type picked">BBQ</li>
+						<li class="type picked">Sandwich</li>
+						<li class="type picked">Burger</li>
 					</ul>
-				
-				<button type="submit" class="btn btn-warning" id="cuisines-submit">Submit</button>	
+			<br>
+			<div class="buttons">
+				<button type="submit" class="btn btn-submit-alt btn-lg " id="cuisines-back">Back</button>
+				<button type="submit" class="btn btn-submit-alt btn-lg" id="cuisines-submit">Submit</button>	
+			</div>
 		</div>
 	</div>
 
@@ -112,31 +121,80 @@
 <div id="pricePoint" class= "aligner">
 	<div id="priceInfo">
 		<h1 id="howMuch" class="prompt">How much do you want to spend?</h1>
+			<h2>Pick 1</h2>
+				<br>
+				<br>
 				<ul id = "dollaSigns">
-					<li class="price" value="1">$</li>
-					<li class="price" value="2">$$</li>
-					<li class="price" value="3">$$$</li>
-					<li class="price" value="4">$$$$</li>
+					<li class="price unpicked" value="1">$</li>
+					<li class="price unpicked" value="2">$$</li>
+					<li class="price unpicked" value="3">$$$</li>
+					<li class="price unpicked" value="4">$$$$</li>
 				</ul>
-			<button type="submit" class="btn btn-warning" id="pricePoint-submit">Submit</button>
+
+				<br>
+		<div class="buttons">
+
+			<button type="submit" class="btn btn-submit btn-lg" id="pricePoint-back">Back</button>
+			<button type="submit" class="btn btn-submit btn-lg" id="pricePoint-submit">Submit</button>
+		</div>
 	</div>
 </div>
 
 <div id="results" class="aligner">
 
 	<div id="resultsInfo">
-		<div id="result1">
+	
+		<div id="flip1">
+			
+			<div class="flipper">
+
+				<div id="result1">
+					
+				</div>
+
+				<div id="result1Back">
+
+		
+					
+				</div>
+				
+
+			</div>	
+
 		</div>
 		
+		<div id="flip2">
+			
+			<div class="flipper">
 
-		<div id="result2">
+				<div id="result2" >
+					
+				</div>
+
+				<div id="result2Back">
+					
+				</div>
+
+			</div>	
 
 		</div>
 
+		<div id="flip3">
+			
+			<div class="flipper">
 
-		<div id="result3">
+				<div id="result3">
+					
+				</div>
+
+				<div id="result3Back">
+					
+				</div>
+
+			</div>	
 
 		</div>
+				
 	</div>
 </div>
 
