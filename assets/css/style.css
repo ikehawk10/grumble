@@ -281,6 +281,19 @@ form{
 	border-radius: 35px;
 }
 
+.restaurant-image{
+	height: 300px;
+	width: 400px;
+	border: 3px solid black;
+}
+
+.restaurant-title,
+.restaurant-price,
+.restaurant-rating{
+	text-align: center;
+	
+}
+
 /*.grumbleHeader{
 	background-color: #FC913A;
 }*/

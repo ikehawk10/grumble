@@ -92,19 +92,31 @@ var Zomato = {
                   $("#result1").append("<h1 class='restaurant-title'>Title: " + response.restaurants[i].restaurant.name + "</h1>");
                   $("#result1").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
                   $("#result1").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
+
+                  $("#result1").append("<img class='restaurant-image' src='" + response.restaurants[i].restaurant.featured_image + "'/>");
+
                   $("#result1").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'alt= photo of " + response.restaurants[i].restaurant.name + "/>");
+
                 }
                 if (i === 1){
                   $("#result2").append("<h1 class='restaurant-title'>Title: " + response.restaurants[i].restaurant.name + "</h1>");
                   $("#result2").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
                   $("#result2").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
+
+                  $("#result2").append("<img class='restaurant-image'  src='" + response.restaurants[i].restaurant.featured_image + "'/>");
+
                   $("#result2").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'alt= photo of " + response.restaurants[i].restaurant.name + "/>");
+
                 }
                 if (i === 2) {
                   $("#result3").append("<h1 class='restaurant-title'>Title: " + response.restaurants[i].restaurant.name + "</h1>");
                   $("#result3").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
                   $("#result3").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
+
+                  $("#result3").append("<img class='restaurant-image'  src='" + response.restaurants[i].restaurant.featured_image + "'/>");
+
                   $("#result3").append("<img src='" + response.restaurants[i].restaurant.featured_image + "'alt= photo of " + response.restaurants[i].restaurant.name + "/>");
+
                 }
                 
               }
