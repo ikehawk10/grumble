@@ -108,6 +108,8 @@ var Zomato = {
                 newData.image = response.restaurants[i].restaurant.featured_image;
                 //add current restaurant to the location key
                 newData.address = response.restaurants[i].restaurant.location.address;
+                //add current restaurnt to the info key
+                newData.info = response.restaurants[i].restaurant.cuisines;
                 //push the new object to the restaurantResults array
                 restaurantResults.push(newData);
 
@@ -123,7 +125,8 @@ var Zomato = {
                   //append the restaurant's average cost for two to html node
                   pageElement.append("<h3 class='restaurant-price'>Price for Two: $" + restaurant.avgCost + "</h3>");
                   //append the restaurant's average rating to html node
-                  pageElement.append("<p class='restaurant-rating'>Rating: " + restaurant.aggSeat + "</p>")
+                  pageElement.append("<p class='restaurant-rating'>Rating: " + restaurant.aggSeat + "</p>");
+                  pageElement.append("<p class='restaurant-info'>Cuisine Type: " + restaurant.info + "</p>");
             }
 
             function placeOnBack(restaurant, pageElement){
