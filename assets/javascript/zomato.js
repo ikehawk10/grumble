@@ -88,14 +88,15 @@ var Zomato = {
           count: count,
           q: extractString(cuisineNotEliminated),
           radius: radius,
-          sort: "rating"
+          sort: "rating",
+          order: "desc"
         },
         success:function (response) {
             console.log(response);
             //loop through the JSON response of restaurants
             for (var i = 0; i < response.restaurants.length; i++) {
               //if the current restaurant has a featured image AND a price range that matches the user input...
-              if (response.restaurants[i].restaurant.featured_image && response.restaurants[i].restaurant.price_range == priceSelected) {
+              if (response.restaurants[i].restaurant.featured_image && response.restaurants[i].restaurant.price_range <= priceSelected) {
                 //create a new object
                 var newData = {}
                 //add current restaurant to the name key
@@ -113,9 +114,9 @@ var Zomato = {
                 //push the new object to the restaurantResults array
                 restaurantResults.push(newData);
 
-                console.log(restaurantResults);
-              }
-            }
+                
+              } 
+            } console.log(restaurantResults);
             //function that takes in a restaurant and where to place that restaurant
             function placeOnPage(restaurant,pageElement){
                   //append the restaurant's image to html node
@@ -156,8 +157,8 @@ var Zomato = {
 
 //coordinates of location
 var coords = {
-	latitude: "39.278444",
-	longitude: "-76.613159"
+	latitude: "32.776664",
+	longitude: "-96.796988"
 }
 
 var radius = 16093.44;
