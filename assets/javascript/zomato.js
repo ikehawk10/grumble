@@ -91,35 +91,56 @@ var Zomato = {
           sort: "rating"
         },
         success:function (response) {
-            // console.log(response);
+            console.log(response);
+            //loop through the JSON response of restaurants
             for (var i = 0; i < response.restaurants.length; i++) {
+              //if the current restaurant has a featured image AND a price range that matches the user input...
               if (response.restaurants[i].restaurant.featured_image && response.restaurants[i].restaurant.price_range == priceSelected) {
-
+                //create a new object
                 var newData = {}
+                //add current restaurant to the name key
                 newData.name = response.restaurants[i].restaurant.name;
+                //add current restaurant to the average cost for two key
                 newData.avgCost = response.restaurants[i].restaurant.average_cost_for_two;
+                //add current restaurant to the user rating key
                 newData.aggSeat = response.restaurants[i].restaurant.user_rating.aggregate_rating;
+                //add current restaurant to the image key
                 newData.image = response.restaurants[i].restaurant.featured_image;
+                //add current restaurant to the location key
+                newData.address = response.restaurants[i].restaurant.location.address;
+                //push the new object to the restaurantResults array
                 restaurantResults.push(newData);
+
                 console.log(restaurantResults);
               }
             }
-
+            //function that takes in a restaurant and where to place that restaurant
             function placeOnPage(restaurant,pageElement){
+                  //append the restaurant's image to html node
                   pageElement.append("<img class='restaurant-image' src='" + restaurant.image + "'/>");
+                  //append the restaurant's name to html node
                   pageElement.append("<h1 class='restaurant-title'>" + restaurant.name + "</h1>");
+                  //append the restaurant's average cost for two to html node
                   pageElement.append("<h3 class='restaurant-price'>Price for Two: $" + restaurant.avgCost + "</h3>");
+                  //append the restaurant's average rating to html node
                   pageElement.append("<p class='restaurant-rating'>Rating: " + restaurant.aggSeat + "</p>")
             }
 
-            for (var n=0;n<restaurantResults.length;n++){
+            function placeOnBack(restaurant, pageElement){
+              pageElement.append("<h3 class='restaurant-address'>" + restaurant.address + "</h3>");
+            }
+            //loop through the new restaurants array
+            for (var n = 0; n < restaurantResults.length; n++){
+              //make the number the index value plus 1
               var newNum = n+1;
-              var newDiv = $(`#result${newNum}`);
-              placeOnPage(restaurantResults[n],newDiv);
+              //select the specific div we want to append to
+              var resultsDiv = $(`#result${newNum}`);
+              var resultsBack = $(`#result${newNum}Back`);
+              //run the function that takes in the specific restaurant and places it on the page
+              placeOnPage(restaurantResults[n],resultsDiv);
+              placeOnBack(restaurantResults[n], resultsBack);
             }
           },  
-           
-          // scb(response);
 
         error:function (res) {
           ecb(res)
@@ -142,7 +163,6 @@ var count = 30;
 //API key
 Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 //call search options with location, cuisine, and count limit
-
   $("#pricePoint-submit").on("click", function(){
     Zomato.search(coords, cuisines, count, radius, scb);
     console.log(priceSelected.toString());
