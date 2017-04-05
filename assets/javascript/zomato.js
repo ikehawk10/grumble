@@ -91,44 +91,36 @@ var Zomato = {
           sort: "rating"
         },
         success:function (response) {
-          
-            for (var i = 0; i < count; i++) {
-              if (response.restaurants[i].restaurant.featured_image && response.restaurants[i].restaurant.price_range <= priceSelected) {
-                restaurantResults.push(response.restaurants[i]);
+            // console.log(response);
+            for (var i = 0; i < response.restaurants.length; i++) {
+              if (response.restaurants[i].restaurant.featured_image && response.restaurants[i].restaurant.price_range == priceSelected) {
+
+                var newData = {}
+                newData.name = response.restaurants[i].restaurant.name;
+                newData.avgCost = response.restaurants[i].restaurant.average_cost_for_two;
+                newData.aggSeat = response.restaurants[i].restaurant.user_rating.aggregate_rating;
+                newData.image = response.restaurants[i].restaurant.featured_image;
+                restaurantResults.push(newData);
                 console.log(restaurantResults);
-                if(i === 0) {
-
-                  $("#result1").append("<img class='restaurant-image' src='" + response.restaurants[i].restaurant.featured_image + "'/>");
-
-                  $("#result1").append("<h1 class='restaurant-title'>" + response.restaurants[i].restaurant.name + "</h1>");
-                  $("#result1").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
-                  $("#result1").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
-
-
-                }
-                if (i === 1){
-
-                  $("#result2").append("<img class='restaurant-image'  src='" + response.restaurants[i].restaurant.featured_image + "'/>");
-
-                  $("#result2").append("<h1 class='restaurant-title'>" + response.restaurants[i].restaurant.name + "</h1>");
-                  $("#result2").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
-                  $("#result2").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
-
-                }
-                if (i === 2) {
-
-                  $("#result3").append("<img class='restaurant-image'  src='" + response.restaurants[i].restaurant.featured_image + "'/>");
-
-                  $("#result3").append("<h1 class='restaurant-title'>" + response.restaurants[i].restaurant.name + "</h1>");
-                  $("#result3").append("<h3 class='restaurant-price'>Price for Two: $" + response.restaurants[i].restaurant.average_cost_for_two + "</h3>");
-                  $("#result3").append("<p class='restaurant-rating'>Rating: " + response.restaurants[i].restaurant.user_rating.aggregate_rating + "</p>")
-                }
-
               }
             }
-                
-          scb(response);
-        },
+
+            function placeOnPage(restaurant,pageElement){
+                  pageElement.append("<img class='restaurant-image' src='" + restaurant.image + "'/>");
+                  pageElement.append("<h1 class='restaurant-title'>" + restaurant.name + "</h1>");
+                  pageElement.append("<h3 class='restaurant-price'>Price for Two: $" + restaurant.avgCost + "</h3>");
+                  pageElement.append("<p class='restaurant-rating'>Rating: " + restaurant.aggSeat + "</p>")
+            }
+
+            for (var n=0;n<restaurantResults.length;n++){
+              var newNum = n+1;
+              var newDiv = $(`#result${newNum}`);
+              placeOnPage(restaurantResults[n],newDiv);
+            }
+          },  
+           
+          // scb(response);
+
         error:function (res) {
           ecb(res)
         }
@@ -146,7 +138,7 @@ var coords = {
 
 var radius = 16093.44;
 //max results to return
-var count = 15;
+var count = 30;
 //API key
 Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 //call search options with location, cuisine, and count limit
@@ -166,4 +158,4 @@ function ecb(){
   console.log("there was an error in zomato.js");
 }
 
-})
+});
