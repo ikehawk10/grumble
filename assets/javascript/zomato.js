@@ -10,8 +10,8 @@ var priceSelected = new Array();
   $('.price').click(function() {
      priceSelected.push($(this).val());
 
-  $(this).toggleClass("unpicked");
-  $(this).toggleClass("picked");
+  $(this).toggleClass("pricePicked");
+  $(this).toggleClass("priceUnpicked");
 })
 
 //create a function that takes in an array

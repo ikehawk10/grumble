@@ -30,7 +30,7 @@
 		<img src="assets/images/b8.jpg" class="bgM"/>
 		<img src="assets/images/b9.jpg" class="bgM"/>
 		<img src="assets/images/b10.jpg" class="bgM"/>
-		<img src="assets/images/b11.jpg" class="bgM"/>
+		<img src="assets/images/b11.jpeg" class="bgM"/>
 		<img src="assets/images/b12.jpg" class="bgM"/>
 		<img src="assets/images/b13.jpg" class="bgM"/>
 
@@ -38,8 +38,19 @@
 
 	
 		<div id="startScreen" class="aligner">
+
+			<div class="intro">
+					<h2>Can't decide where to eat?</h2>
+					<h2>Let us help!</h2>
 			
-				<div id="start" class="aligner-item"><h1>Click to start!</h1></div>
+			
+			
+
+				<div id="start" class="aligner-item">
+					<a href="#"><h1>Click to start!</h1></a>
+				</div>
+
+			</div>
 		</div>
 	
 
@@ -90,7 +101,7 @@
 
 		<div id="cuisinesInfo">
 			<h1 id="notWant" class="promptAlt">What do you NOT want to eat?</h1>
-				<h2>Pick 3 to eliminate</h2>
+				<h2>You must eliminate at least 3</h2>
 				<br>
 				<br>
 					<ul id = "elimination-list">
@@ -125,10 +136,10 @@
 				<br>
 				<br>
 				<ul id = "dollaSigns">
-					<li class="price unpicked" value="1">$</li>
-					<li class="price unpicked" value="2">$$</li>
-					<li class="price unpicked" value="3">$$$</li>
-					<li class="price unpicked" value="4">$$$$</li>
+					<li class="price pricePicked" value="1">$</li>
+					<li class="price pricePicked" value="2">$$</li>
+					<li class="price pricePicked" value="3">$$$</li>
+					<li class="price pricePicked" value="4">$$$$</li>
 				</ul>
 
 				<br>
@@ -144,16 +155,18 @@
 
 	<div id="resultsInfo">
 	
-		<div id="flip1">
+		
 			
 			<div class="flipper">
 
-				<div id="result1">
+				<div id="result1" class="front">
 					
 				</div>
 
-				<div id="result1Back">
-
+				<div id="result1Back" class="back">
+				
+				<img class=
+				"restaurant-image" src="http://talesoftheidiot.com/wp-content/uploads/2015/05/heythere-01.png">
 		
 					
 				</div>
@@ -161,39 +174,37 @@
 
 			</div>	
 
-		</div>
 		
-		<div id="flip2">
+		
+		
 			
 			<div class="flipper">
 
-				<div id="result2" >
+				<div id="result2" class="front">
 					
 				</div>
 
-				<div id="result2Back">
+				<div id="result2Back" class="back">
 					
 				</div>
 
 			</div>	
 
-		</div>
-
-		<div id="flip3">
+		
+		
 			
 			<div class="flipper">
 
-				<div id="result3">
+				<div id="result3" class="front">
 					
 				</div>
 
-				<div id="result3Back">
+				<div id="result3Back" class="back">
 					
 				</div>
 
 			</div>	
 
-		</div>
 				
 	</div>
 </div>
@@ -212,11 +223,13 @@
 
 
 <!-- <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
-  <script type="text/javascript" src="assets/javascript/jquery.cycle.lite.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+<script type="text/javascript" src="assets/javascript/jquery.cycle.lite.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script> -->
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0&callback=initMap">
+    </script>
 <script src="assets/javascript/app.js"></script>
 <script src="assets/javascript/zomato.js"></script>
 </body>
