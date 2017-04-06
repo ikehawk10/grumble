@@ -12,8 +12,8 @@ var priceSelected = new Array();
     //user selects what price point they want to search for
      priceSelected.push($(this).val());
 
-  $(this).toggleClass("unpicked");
-  $(this).toggleClass("picked");
+  $(this).toggleClass("pricePicked");
+  $(this).toggleClass("priceUnpicked");
 })
 
 //create a function that takes in an array
