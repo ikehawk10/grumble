@@ -123,7 +123,7 @@ var Zomato = {
           var resultsBack = $(`#result${newNum}Back`);
           //run the function that takes in the specific restaurant and places it on the page
           placeOnPage(restaurantResults[n],resultsDiv);
-          placeOnBack(restaurantResults[n], resultsBack);
+// placeOnBack(restaurantResults[n], resultsBack);
         }
       },  
       //error message function
