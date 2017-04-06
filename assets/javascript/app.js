@@ -6,11 +6,17 @@
 // // var origin = "origin=Disneyland&";
 // // var destination ="destination=Universal+Studios+Hollywood4";
 // // var queryURL = "https://maps.googleapis.com/maps/api/directions/json?&"  + origin + destination +  googleMapsKey;
+
+//******************VARIABLES******************
 var userZIP;
 var mileRadius;
 var userZiplatitude;
 var userZiplongitude;
 
+
+
+
+//function to store user input zipcode as lat/long variables
 function getCoords() {
 
     var geocoder = new google.maps.Geocoder();
@@ -47,25 +53,21 @@ function getCoords() {
 // 	$("#location").toggle("slide");
 // });
 
+
+
+
+//When page loads hides all content areas except the start screen
 $(document).ready(function() {
     $("#location").hide();
     $("#cuisines").hide();
     $("#pricePoint").hide();
     $("#results").hide();
-    $(".food-photos").hide();
+   
 
     // $("#slideshow").hide();
 });
 
-$("#start").on("click", function(event) {
-    event.preventDefault();
-    $("#startScreen").toggle("slide");
-    $("#location").toggle("slide");
-    $("#location").show();
-    $("#slideshow").hide();
-
-});
-
+//This is what causes the background slideshow on page load could be merged into above function. 
 $(document).ready(function() {
     $('#slideshow').cycle({
         fx: 'fade',
@@ -79,6 +81,18 @@ $(document).ready(function() {
 });
 
 
+//When "Click to Start" button is clicked, this slides away the start button, slides in the location content
+
+$("#start").on("click", function(event) {
+    event.preventDefault();
+    $("#startScreen").toggle("slide");
+    $("#location").toggle("slide");
+    $("#location").show();
+    $("#slideshow").hide();
+
+});
+
+//when the user submits their location preferences this captures the zip code and radius as a variables to be used by the geocoder and map respectively. Runs geocoder function. Also hides location slide and brings forth the cuisines preferences content.
 
 $("#distance-submit").on("click", function(event) {
     event.preventDefault();
@@ -90,21 +104,12 @@ $("#distance-submit").on("click", function(event) {
 
     getCoords();
 
-
-
-
-    // $("#location").toggle("slide");
-
-
-
     console.log(userZIP);
     console.log(mileRadius);
 
+//Calls the Wunderground API to pull weather info as a json response for user's zipcode
 
-
-
-
-    var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
+// var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
 
     // $.ajax({
     // 	url: queryWeather,
@@ -119,6 +124,8 @@ $("#distance-submit").on("click", function(event) {
 
 });
 
+//When user submits their cuisines preferences this removes and displays the respecitve content
+
 $("#cuisines-submit").on("click", function(event) {
     event.preventDefault();
     $("#cuisines").toggle("slide");
@@ -126,6 +133,8 @@ $("#cuisines-submit").on("click", function(event) {
     $("#pricePoint").show();
 });
 
+
+//Changes display from questions to results
 $("#pricePoint-submit").on("click", function(event) {
     event.preventDefault();
     $("#pricePoint").toggle("slide");
@@ -135,25 +144,11 @@ $("#pricePoint-submit").on("click", function(event) {
 
 
 
-
-// $("#flip1").on("click", function(){
-// 	$(this).toggleClass("flip-container");
-// });
-
-// $("#flip2").on("click", function(){
-// 	$(this).toggleClass("flip-container");
-// });
-
-
-// $("#flip3").on("click", function(){
-// 	$(this).toggleClass("flip-container");
-// });
-
-
+//this controls the "flip" animation of the results boxes. 
 
 $(".flipper").flip({
 	trigger: "click",
 	background: "#f3ffe2"
 });
-// });
+
 
