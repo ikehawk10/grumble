@@ -6,6 +6,47 @@ var cuisineNotEliminated;
 //set empty array for desired restaurant results later
 var restaurantResults = [];
 
+var userZIP;
+var mileRadius;
+var userZiplatitude;
+var userZiplongitude;
+var searchLat = "";
+var searchLong = "";
+
+
+$("#distance-submit").on("click", function(event) {
+    event.preventDefault();
+    userZIP = $("#zip-input").val().trim();
+    mileRadius = $("#distance-select").val();
+    $("#location").toggle("slide");
+    $("#cuisines").toggle("slide");
+    $("#cuisines").show();
+
+    getCoords();
+
+    console.log(userZIP);
+    console.log(mileRadius);
+});
+
+//function to store user input zipcode as lat/long variables
+function getCoords() {
+
+    var geocoder = new google.maps.Geocoder();
+    var address = userZIP;
+    geocoder.geocode({ 'address': address }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            userZiplatitude = results[0].geometry.location.lat();
+            userZiplongitude = results[0].geometry.location.lng();
+            searchLat = userZiplatitude.toString();
+            searchLong = userZiplongitude.toString();
+            console.log(typeof(searchLat));
+            // console.log("Latitude: " + userZiplatitude + "\nLongitude: " + userZiplongitude);
+        } else {
+            alert("Request failed.")
+        } return searchLat; return searchLong;
+    });
+};
+
 //user price assigned to an array
 var priceSelected = new Array();
   $('.price').click(function() {
@@ -63,15 +104,15 @@ var Zomato = {
   },
   //main search parameters
   search: function(coords, cuisines, count, radius, scb, ecb){
-    if (coords.latitude&&coords.longitude==null) {
+    if (coords.longitude&&coords.latitude==null) {
       console.error("Enter the coordinates correctly");
     } else {
       $.ajax({
         url:url+"/search",
         headers:zheader,
         data:{
-          lat:coords.latitude,
-          lon:coords.longitude,
+          lat: searchLat,
+          lon: searchLong,
           count: count,
           q: extractString(cuisineNotEliminated),
           radius: radius,
@@ -80,6 +121,8 @@ var Zomato = {
         },
     success:function (response) {
         console.log(response);
+        console.log(searchLat);
+        console.log(searchLong);
         //loop through the JSON response of restaurants
         for (var i = 0; i < response.restaurants.length; i++) {
           //if the current restaurant has a featured image AND a price range that matches the user input...
@@ -139,11 +182,10 @@ var Zomato = {
   }
 }
 
-
-//coordinates of location
+// coordinates of location
 var coords = {
-	latitude: "32.776664",
-	longitude: "-96.796988"
+  latitude:userZiplatitude,
+  longitude: userZiplongitude
 }
 
 var radius = 16093.44;
@@ -153,7 +195,7 @@ var count = 30;
 Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 //call search options with location, cuisine, and count limit
   $("#pricePoint-submit").on("click", function(){
-    Zomato.search(coords, cuisines, count, radius, scb);
+    Zomato.search(cuisines, count, radius, scb);
     console.log(priceSelected.toString());
     
 }) 
@@ -174,41 +216,6 @@ function ecb(){
 //start of app.js
 //
 //=====================================================
-
-
-// $(document).ready(function(){
-
-// // var googleMapsKey = "&key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0";
-// // var weatherKey = " 88fa17d19b77bfc5";
-
-// // var origin = "origin=Disneyland&";
-// // var destination ="destination=Universal+Studios+Hollywood4";
-// // var queryURL = "https://maps.googleapis.com/maps/api/directions/json?&"  + origin + destination +  googleMapsKey;
-
-//******************VARIABLES******************
-var userZIP;
-var mileRadius;
-var userZiplatitude;
-var userZiplongitude;
-
-
-
-
-//function to store user input zipcode as lat/long variables
-function getCoords() {
-
-    var geocoder = new google.maps.Geocoder();
-    var address = userZIP;
-    geocoder.geocode({ 'address': address }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-            userZiplatitude = results[0].geometry.location.lat();
-            userZiplongitude = results[0].geometry.location.lng();
-            console.log("Latitude: " + userZiplatitude + "\nLongitude: " + userZiplongitude);
-        } else {
-            alert("Request failed.")
-        }
-    });
-};
 
 
 //When page loads hides all content areas except the start screen
@@ -249,23 +256,7 @@ $("#start").on("click", function(event) {
 
 //when the user submits their location preferences this captures the zip code and radius as a variables to be used by the geocoder and map respectively. Runs geocoder function. Also hides location slide and brings forth the cuisines preferences content.
 
-$("#distance-submit").on("click", function(event) {
-    event.preventDefault();
-    userZIP = $("#zip-input").val().trim();
-    mileRadius = $("#distance-select").val();
-    $("#location").toggle("slide");
-    $("#cuisines").toggle("slide");
-    $("#cuisines").show();
 
-    getCoords();
-
-    console.log(userZIP);
-    console.log(mileRadius);
-
-
-
-
-});
 
 //When user submits their cuisines preferences this removes and displays the respecitve content
 
@@ -332,6 +323,15 @@ $(".flipper").flip({
 // $(document).click(function(){
 //  $("#location").toggle("slide");
 // });
+
+// $(document).ready(function(){
+
+// // var googleMapsKey = "&key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0";
+// // var weatherKey = " 88fa17d19b77bfc5";
+
+// // var origin = "origin=Disneyland&";
+// // var destination ="destination=Universal+Studios+Hollywood4";
+// // var queryURL = "https://maps.googleapis.com/maps/api/directions/json?&"  + origin + destination +  googleMapsKey;
 
 
 
