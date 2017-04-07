@@ -15,7 +15,11 @@ var priceSelected = new Array();
   $(this).toggleClass("pricePicked");
   $(this).toggleClass("priceUnpicked");
 })
-
+$(document).ready(function() {
+    $("#zip-input").keypress(function(event) {
+        return /\d/.test(String.fromCharCode(event.keyCode));
+    });
+  });
 //create a function that takes in an array
 function extractString(array){
   //set the initial value to a empty string
