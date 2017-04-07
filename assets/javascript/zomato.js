@@ -56,6 +56,7 @@ var priceSelected = new Array();
   $(this).toggleClass("pricePicked");
   $(this).toggleClass("priceUnpicked");
 })
+
 $(document).ready(function() {
     $("#zip-input").keypress(function(event) {
         return /\d/.test(String.fromCharCode(event.keyCode));
@@ -266,6 +267,14 @@ $("#cuisines-submit").on("click", function(event) {
     $("#pricePoint").toggle("slide");
     $("#pricePoint").show();
 });
+$("#cuisines-back").on("click", function(event){
+  // $(".picked").empty();
+  // $("#zip-input").empty();
+  $("#cuisines").toggle("slide");
+  $("#location").toggle("slide");
+  $("#location").show();
+
+})
 
 
 //Changes display from questions to results
@@ -276,6 +285,14 @@ $("#pricePoint-submit").on("click", function(event) {
     $("#results").show();
 });
 
+$("#pricePoint-back").on("click", function(event){
+  // $(".picked").empty();
+  // $("#zip-input").empty();
+  $("#pricePoint").toggle("slide");
+  $("#cuisines").toggle("slide");
+  $("#cuisines").show();
+
+})
 
 
 //this controls the "flip" animation of the results boxes. 
