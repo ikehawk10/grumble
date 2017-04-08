@@ -12,6 +12,10 @@ var userZIP;
 var mileRadius;
 var userZiplatitude;
 var userZiplongitude;
+var map1;
+var map2;
+var map3;
+
 
 
 
@@ -33,25 +37,30 @@ function getCoords() {
 };
 
 
+//function displayMap() {
+  //  initMap();
+    
+    //}
+function initMap(){
+    // Create a div to hold the control.
+    var userLatLong = { lat: parseFloat(userZiplatitude), lng: parseFloat(userZiplongitude) }
+    var myOptions = {
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+        center: new google.maps.LatLng(userLatLong),
+        zoom: 15,
+        disableDefaultUI: true}
+     
+        map1 = new google.maps.Map(document.getElementById("map1"),myOptions);
+        map2 = new google.maps.Map(document.getElementById("map2"),myOptions);
+        map2 = new google.maps.Map(document.getElementById("map3"),myOptions);
+};
+    
 
 
 
-// $.ajax({
-// 	 url: 'https://maps.googleapis.com/maps/api/js/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood4&key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0',
-// 	// url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0&callback=initMap",
-// 	method: "GET",
-// 	dataType:"jsonp",
-// 	crossOrigin:true
-// }).done(function(response) {
-// 	console.log(response);
-// 	});
 
 
-// });
 
-// $(document).click(function(){
-// 	$("#location").toggle("slide");
-// });
 
 
 
@@ -62,7 +71,7 @@ $(document).ready(function() {
     $("#cuisines").hide();
     $("#pricePoint").hide();
     $("#results").hide();
-   
+
 
     // $("#slideshow").hide();
 });
@@ -107,21 +116,6 @@ $("#distance-submit").on("click", function(event) {
     console.log(userZIP);
     console.log(mileRadius);
 
-//Calls the Wunderground API to pull weather info as a json response for user's zipcode
-
-// var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
-
-    // $.ajax({
-    // 	url: queryWeather,
-    // 	method: "GET",
-
-
-    // }).done(function(weather) {
-    // 	console.log(queryWeather);
-    // 	console.log(weather);
-    // 	});
-
-
 });
 
 //When user submits their cuisines preferences this removes and displays the respecitve content
@@ -131,6 +125,7 @@ $("#cuisines-submit").on("click", function(event) {
     $("#cuisines").toggle("slide");
     $("#pricePoint").toggle("slide");
     $("#pricePoint").show();
+    
 });
 
 
@@ -140,15 +135,32 @@ $("#pricePoint-submit").on("click", function(event) {
     $("#pricePoint").toggle("slide");
     $("#results").toggle("slide");
     $("#results").show();
+    initMap(map1);
+    initMap(map2);
+    initMap(map3)
+    
+
 });
+
+
+
+/*$("#results").on("click",function(event){
+    displayMap();
+    //google.maps.event.addListenerOnce(map, 'idle', function() {
+    //google.maps.event.trigger(map, 'resize');
+    //});
+
+});*/
 
 
 
 //this controls the "flip" animation of the results boxes. 
 
 $(".flipper").flip({
-	trigger: "click",
-	background: "#f3ffe2"
+    trigger: "click",
+    background: "#f3ffe2"
+
+
 });
 
 
