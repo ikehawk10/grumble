@@ -5,11 +5,13 @@ var u = "https://developers.zomato.com/api/"//starter URL
 var cuisineNotEliminated;
 //set empty array for desired restaurant results later
 var restaurantResults = [];
+var moreRestaurants = [];
 
 var userZIP;
 var mileRadius;
 var userZiplatitude;
 var userZiplongitude;
+var mileSearch = 0;
 var searchLat = "";
 var searchLong = "";
 
@@ -23,10 +25,10 @@ $("#distance-submit").on("click", function(event) {
     $("#cuisines").show();
 
     getCoords();
-
-    console.log(userZIP);
-    console.log(mileRadius);
+    //convert the miles to search into meters for our API request
+    mileSearch = parseInt(mileRadius) * 1609.34;
 });
+
 
 //function to store user input zipcode as lat/long variables
 function getCoords() {
@@ -116,7 +118,7 @@ var Zomato = {
           lon: searchLong,
           count: count,
           q: extractString(cuisineNotEliminated),
-          radius: radius,
+          radius: mileSearch,
           sort: "rating",
           order: "desc"
         },
@@ -144,7 +146,17 @@ var Zomato = {
             newData.info = response.restaurants[i].restaurant.cuisines;
             //push the new object to the restaurantResults array
             restaurantResults.push(newData);
-          } 
+          } else {
+            //create an array for non-featured restaurants
+            var otherRestaurants = {};
+            otherRestaurants.name = response.restaurants[i].restaurant.name;
+            otherRestaurants.avgCost = response.restaurants[i].restaurant.average_cost_for_two;
+            otherRestaurants.aggSeat = response.restaurants[i].restaurant.user_rating.aggregate_rating;
+            otherRestaurants.address = response.restaurants[i].restaurant.location.address;
+            otherRestaurants.info = response.restaurants[i].restaurant.cuisines;
+            moreRestaurants.push(otherRestaurants);
+
+          }
         } console.log(restaurantResults);
         //function that takes in a restaurant and where to place that restaurant
         function placeOnPage(restaurant,pageElement){
@@ -169,10 +181,19 @@ var Zomato = {
           //select the specific div we want to append to
           var resultsDiv = $(`#result${newNum}`);
           var resultsBack = $(`#result${newNum}Back`);
+          // var extraResults = $(`#`);
           //run the function that takes in the specific restaurant and places it on the page
           placeOnPage(restaurantResults[n],resultsDiv);
           placeOnBack(restaurantResults[n], resultsBack);
         }
+        function extraResults(restaurant, pageElement){
+          pageElement.append("<h1 class='restaurant-title'>" + moreRestaurants[j] + "</h1>" );
+        }
+          for (var j = 0; j < moreRestaurants; j++ ) {
+            var newNum = n+1;
+            var resultsDiv = $(`#extra-result-${newNum}`);
+            extraResults(moreRestaurants[j], resultsDiv);
+          }
       },  
       //error message function
         error:function (res) {
@@ -191,7 +212,7 @@ var coords = {
 
 var radius = 16093.44;
 //max results to return
-var count = 30;
+var count = 10;
 //API key
 Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 //call search options with location, cuisine, and count limit
