@@ -12,6 +12,9 @@ var userZiplatitude;
 var userZiplongitude;
 var searchLat = "";
 var searchLong = "";
+var map1;
+var map2;
+var map3;
 
 
 $("#distance-submit").on("click", function(event) {
@@ -26,6 +29,8 @@ $("#distance-submit").on("click", function(event) {
 
     console.log(userZIP);
     console.log(mileRadius);
+    console.log(userZiplatitude);
+    console.log(userZiplongitude);
 });
 
 //function to store user input zipcode as lat/long variables
@@ -46,6 +51,8 @@ function getCoords() {
         } return searchLat; return searchLong;
     });
 };
+
+
 
 //user price assigned to an array
 var priceSelected = new Array();
@@ -218,7 +225,19 @@ function ecb(){
 //
 //=====================================================
 
-
+function initMap(){
+    // Create a div to hold the control.
+    var userLatLong = { lat: userZiplatitude, lng: userZiplongitude }
+    var myOptions = {
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+        center: new google.maps.LatLng(userLatLong),
+        zoom: 15,
+        disableDefaultUI: true}
+     
+        map1 = new google.maps.Map(document.getElementById("map1"),myOptions);
+        map2 = new google.maps.Map(document.getElementById("map2"),myOptions);
+        map2 = new google.maps.Map(document.getElementById("map3"),myOptions);
+};
 //When page loads hides all content areas except the start screen
 $(document).ready(function() {
     $("#location").hide();
@@ -283,6 +302,10 @@ $("#pricePoint-submit").on("click", function(event) {
     $("#pricePoint").toggle("slide");
     $("#results").toggle("slide");
     $("#results").show();
+    // initMap(map1);
+    // initMap(map2);
+    // initMap(map3);
+    
 });
 
 $("#pricePoint-back").on("click", function(event){
@@ -298,15 +321,34 @@ $("#pricePoint-back").on("click", function(event){
 //this controls the "flip" animation of the results boxes. 
 
 $(".flipper").flip({
-  trigger: "click",
+  trigger: "manual",
   background: "#f3ffe2"
+})
+
+
+$("#flip1").on("click", function(){
+    $("#flip1").flip(true);
 });
 
+$("#flip1").on("dblclick", function(){
+    $("#flip1").flip(false);
+})
 
+$("#flip2").on("click", function(){
+    $("#flip2").flip(true);
+})
 
+$("#flip2").on("dblclick", function(){
+    $("#flip2").flip(false);
+})
 
+$("#flip3").on("click", function(){
+    $("#flip3").flip(true);
+})
 
-
+$("#flip3").on("dblclick", function(){
+    $("#flip3").flip(false);
+})
 //Weather API for later
 
 //Calls the Wunderground API to pull weather info as a json response for user's zipcode
