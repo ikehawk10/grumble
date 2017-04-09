@@ -186,14 +186,14 @@ var Zomato = {
           placeOnPage(restaurantResults[n],resultsDiv);
           placeOnBack(restaurantResults[n], resultsBack);
         }
-        function extraResults(restaurant, pageElement){
-          pageElement.append("<h1 class='restaurant-title'>" + moreRestaurants[j] + "</h1>" );
-        }
-          for (var j = 0; j < moreRestaurants; j++ ) {
-            var newNum = n+1;
-            var resultsDiv = $(`#extra-result-${newNum}`);
-            extraResults(moreRestaurants[j], resultsDiv);
-          }
+        // function extraResults(restaurant, pageElement){
+        //   pageElement.append("<h1 class='restaurant-title'>" + moreRestaurants[j] + "</h1>" );
+        // }
+        //   for (var j = 0; j < moreRestaurants.length; j++ ) {
+        //     var newNum = n+1;
+        //     var resultsDiv = $(`#extra-result-${newNum}`);
+        //     extraResults(moreRestaurants[j], resultsDiv);
+        //   }
       },  
       //error message function
         error:function (res) {
