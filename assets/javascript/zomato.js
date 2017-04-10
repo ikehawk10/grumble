@@ -63,8 +63,8 @@ $('.type').click(function() {
   $(this).toggleClass("unpicked");
 
 
-  console.log(eliminated);
-  console.log(cuisineNotEliminated);
+  console.log("eliminated " + eliminated);
+  // console.log("cusineNotEliminated: " + cuisineNotEliminated);
 
 // new array to eliminate duplicated items
  var newEliminated = [];
@@ -83,9 +83,11 @@ $.each(eliminated , function (i, el) {
         }
   
     }
+cuisineNotEliminated = $(cuisineOptions).not(newEliminated).get();
+console.log("cusineNotEliminated: " + cuisineNotEliminated);
 });
 
-console.log(newEliminated);
+console.log("newEliminated " + newEliminated);
 // console.log(newNotEliminated);
  });
 
