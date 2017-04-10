@@ -1,3 +1,7 @@
+var userZiplatitude = "";
+var userZiplongitude = "";
+var restLat = "";
+var restLng = "";
 $(document).ready(function(){
 var zheader,version,url;
 var u = "https://developers.zomato.com/api/"//starter URL
@@ -8,15 +12,14 @@ var restaurantResults = [];
 
 var userZIP;
 var mileRadius;
-var userZiplatitude;
-var userZiplongitude;
+
 var searchLat = "";
 var searchLong = "";
 var map1;
 var map2;
 var map3;
 
-
+getCoords();
 $("#distance-submit").on("click", function(event) {
     event.preventDefault();
     userZIP = $("#zip-input").val().trim();
@@ -50,6 +53,7 @@ function getCoords() {
             alert("Request failed.")
         } return searchLat; return searchLong;
     });
+    
 };
 
 
@@ -225,19 +229,7 @@ function ecb(){
 //
 //=====================================================
 
-function initMap(){
-    // Create a div to hold the control.
-    var userLatLong = { lat: userZiplatitude, lng: userZiplongitude }
-    var myOptions = {
-        mapTypeId: google.maps.MapTypeId.ROADMAP, 
-        center: new google.maps.LatLng(userLatLong),
-        zoom: 15,
-        disableDefaultUI: true}
-     
-        map1 = new google.maps.Map(document.getElementById("map1"),myOptions);
-        map2 = new google.maps.Map(document.getElementById("map2"),myOptions);
-        map2 = new google.maps.Map(document.getElementById("map3"),myOptions);
-};
+
 //When page loads hides all content areas except the start screen
 $(document).ready(function() {
     $("#location").hide();
@@ -302,11 +294,31 @@ $("#pricePoint-submit").on("click", function(event) {
     $("#pricePoint").toggle("slide");
     $("#results").toggle("slide");
     $("#results").show();
-    // initMap(map1);
+    initMap();
     // initMap(map2);
     // initMap(map3);
+    // console.log(initMap());
     
 });
+
+var marker; 
+
+function initMap(){
+    // Create a div to hold the control.
+    console.log(userZiplongitude + userZiplatitude);
+    var userLatLong = { lat: parseFloat(userZiplatitude), lng: parseFloat(userZiplongitude) }
+    var myOptions = {
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+        center: new google.maps.LatLng(userLatLong),
+        zoom: 15,
+        disableDefaultUI: true}
+     
+        map1 = new google.maps.Map(document.getElementById("map1"),myOptions);
+        map2 = new google.maps.Map(document.getElementById("map2"),myOptions);
+        map3 = new google.maps.Map(document.getElementById("map3"),myOptions);
+
+        
+};
 
 $("#pricePoint-back").on("click", function(event){
   // $(".picked").empty();
