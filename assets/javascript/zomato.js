@@ -5,7 +5,20 @@ var u = "https://developers.zomato.com/api/"//starter URL
 var cuisineNotEliminated;
 //set empty array for desired restaurant results later
 var restaurantResults = [];
+function toggleClick(on) {
 
+   if(on) {
+      $('.selected').on('click', function(){
+         console.log('clicked');
+         toggleClick(false);
+
+      });
+
+   } else {
+      $('.selected').off('click');
+   }
+
+}
 //user price assigned to an array
 var priceSelected = new Array();
   $('.price').click(function() {
@@ -36,7 +49,10 @@ function extractString(array){
 //list of food options to select from
 var cuisineOptions = ["Italian", "American", "BBQ", "Burger", "Asian", "Seafood", "Pizza", "Breakfast", "Sandwich","Mexican"];
 //array of eliminated cuisine options
+
 var eliminated = new Array();
+
+
 //when food button is clicked
 $('.type').click(function() {
   //push the food type to a new array
@@ -45,7 +61,37 @@ $('.type').click(function() {
   cuisineNotEliminated = $(cuisineOptions).not(eliminated).get();
   $(this).toggleClass("picked");
   $(this).toggleClass("unpicked");
+
+
+  console.log(eliminated);
+  console.log(cuisineNotEliminated);
+
+// new array to eliminate duplicated items
+ var newEliminated = [];
+ // newNotEliminated = $(cuisineOptions).not(newEliminated).get();
+
+$.each(eliminated , function (i, el) {
+    
+    if ($.inArray(el, newEliminated ) === -1) {
+        newEliminated.push(el);
+    } 
+    
+    else {
+        var index = newEliminated.indexOf(el);
+        if(index > -1){
+           newEliminated.splice(index, 1);
+        }
+  
+    }
 });
+
+console.log(newEliminated);
+// console.log(newNotEliminated);
+ });
+
+
+
+
 
 //zomato api call
 var Zomato = {
