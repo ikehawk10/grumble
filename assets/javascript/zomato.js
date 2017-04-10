@@ -41,7 +41,6 @@ function getCoords() {
             userZiplongitude = results[0].geometry.location.lng();
             searchLat = userZiplatitude.toString();
             searchLong = userZiplongitude.toString();
-            console.log(typeof(searchLat));
             // console.log("Latitude: " + userZiplatitude + "\nLongitude: " + userZiplongitude);
         } else {
             alert("Request failed.")
@@ -124,8 +123,6 @@ var Zomato = {
         },
     success:function (response) {
         console.log(response);
-        console.log(searchLat);
-        console.log(searchLong);
         //loop through the JSON response of restaurants
         for (var i = 0; i < response.restaurants.length; i++) {
           //if the current restaurant has a featured image AND a price range that matches the user input...
@@ -157,8 +154,7 @@ var Zomato = {
             moreRestaurants.push(otherRestaurants);
 
           }
-        } console.log(restaurantResults);
-        //function that takes in a restaurant and where to place that restaurant
+        }        //function that takes in a restaurant and where to place that restaurant
         function placeOnPage(restaurant,pageElement){
               //append the restaurant's image to html node
               pageElement.append("<img class='restaurant-image' src='" + restaurant.image + "'/>");
@@ -186,14 +182,6 @@ var Zomato = {
           placeOnPage(restaurantResults[n],resultsDiv);
           placeOnBack(restaurantResults[n], resultsBack);
         }
-        // function extraResults(restaurant, pageElement){
-        //   pageElement.append("<h1 class='restaurant-title'>" + moreRestaurants[j] + "</h1>" );
-        // }
-        //   for (var j = 0; j < moreRestaurants.length; j++ ) {
-        //     var newNum = n+1;
-        //     var resultsDiv = $(`#extra-result-${newNum}`);
-        //     extraResults(moreRestaurants[j], resultsDiv);
-        //   }
       },  
       //error message function
         error:function (res) {
@@ -217,9 +205,7 @@ var count = 10;
 Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 //call search options with location, cuisine, and count limit
   $("#pricePoint-submit").on("click", function(){
-    Zomato.search(cuisines, count, radius, scb);
-    console.log(priceSelected.toString());
-    
+    Zomato.search(cuisines, count, radius, scb);    
 }) 
 
 
@@ -260,8 +246,6 @@ $(document).ready(function() {
         speed: 2000,
         timeout: 3500
     });
-
-    console.log("slideshow");
 });
 
 
@@ -322,54 +306,6 @@ $(".flipper").flip({
   trigger: "click",
   background: "#f3ffe2"
 });
-
-
-
-
-
-
-//Weather API for later
-
-//Calls the Wunderground API to pull weather info as a json response for user's zipcode
-
-// var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
-
-    // $.ajax({
-    //  url: queryWeather,
-    //  method: "GET",
-
-
-    // }).done(function(weather) {
-    //  console.log(queryWeather);
-    //  console.log(weather);
-    //  });
-
-
-// $.ajax({
-//   url: 'https://maps.googleapis.com/maps/api/js/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood4&key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0',
-//  // url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0&callback=initMap",
-//  method: "GET",
-//  dataType:"jsonp",
-//  crossOrigin:true
-// }).done(function(response) {
-//  console.log(response);
-//  });
-
-
-// });
-
-// $(document).click(function(){
-//  $("#location").toggle("slide");
-// });
-
-// $(document).ready(function(){
-
-// // var googleMapsKey = "&key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0";
-// // var weatherKey = " 88fa17d19b77bfc5";
-
-// // var origin = "origin=Disneyland&";
-// // var destination ="destination=Universal+Studios+Hollywood4";
-// // var queryURL = "https://maps.googleapis.com/maps/api/directions/json?&"  + origin + destination +  googleMapsKey;
 
 
 

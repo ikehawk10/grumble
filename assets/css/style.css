@@ -510,7 +510,8 @@ button{
 */
 .restaurant-image{
     width: 100%;
-    height: auto;
+    max-height: 350px;
+    min-height: 350px;
     border-top: 20px solid #f3ffe2;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
