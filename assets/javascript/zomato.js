@@ -1,3 +1,7 @@
+var userZiplatitude = "";
+var userZiplongitude = "";
+var restLat = "";
+var restLng = "";
 $(document).ready(function(){
 var zheader,version,url;
 var u = "https://developers.zomato.com/api/"//starter URL
@@ -9,13 +13,14 @@ var moreRestaurants = [];
 
 var userZIP;
 var mileRadius;
-var userZiplatitude;
-var userZiplongitude;
-var mileSearch = 0;
+
 var searchLat = "";
 var searchLong = "";
+var map1;
+var map2;
+var map3;
 
-
+getCoords();
 $("#distance-submit").on("click", function(event) {
     event.preventDefault();
     userZIP = $("#zip-input").val().trim();
@@ -25,8 +30,10 @@ $("#distance-submit").on("click", function(event) {
     $("#cuisines").show();
 
     getCoords();
+
     //convert the miles to search into meters for our API request
     mileSearch = parseInt(mileRadius) * 1609.34;
+
 });
 
 
@@ -46,7 +53,10 @@ function getCoords() {
             alert("Request failed.")
         } return searchLat; return searchLong;
     });
+    
 };
+
+
 
 //user price assigned to an array
 var priceSelected = new Array();
@@ -288,7 +298,31 @@ $("#pricePoint-submit").on("click", function(event) {
     $("#pricePoint").toggle("slide");
     $("#results").toggle("slide");
     $("#results").show();
+    initMap();
+    // initMap(map2);
+    // initMap(map3);
+    // console.log(initMap());
+    
 });
+
+var marker; 
+
+function initMap(){
+    // Create a div to hold the control.
+    console.log(userZiplongitude + userZiplatitude);
+    var userLatLong = { lat: parseFloat(userZiplatitude), lng: parseFloat(userZiplongitude) }
+    var myOptions = {
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+        center: new google.maps.LatLng(userLatLong),
+        zoom: 15,
+        disableDefaultUI: true}
+     
+        map1 = new google.maps.Map(document.getElementById("map1"),myOptions);
+        map2 = new google.maps.Map(document.getElementById("map2"),myOptions);
+        map3 = new google.maps.Map(document.getElementById("map3"),myOptions);
+
+        
+};
 
 $("#pricePoint-back").on("click", function(event){
   // $(".picked").empty();
@@ -303,9 +337,78 @@ $("#pricePoint-back").on("click", function(event){
 //this controls the "flip" animation of the results boxes. 
 
 $(".flipper").flip({
-  trigger: "click",
+  trigger: "manual",
   background: "#f3ffe2"
+})
+
+
+$("#flip1").on("click", function(){
+    $("#flip1").flip(true);
 });
+
+$("#flip1").on("dblclick", function(){
+    $("#flip1").flip(false);
+})
+
+
+$("#flip2").on("click", function(){
+    $("#flip2").flip(true);
+})
+
+$("#flip2").on("dblclick", function(){
+    $("#flip2").flip(false);
+})
+
+$("#flip3").on("click", function(){
+    $("#flip3").flip(true);
+})
+
+$("#flip3").on("dblclick", function(){
+    $("#flip3").flip(false);
+})
+//Weather API for later
+
+//Calls the Wunderground API to pull weather info as a json response for user's zipcode
+
+// var queryWeather = "http://api.wunderground.com/api/88fa17d19b77bfc5/conditions/q/" + userZIP + ".json";
+
+    // $.ajax({
+    //  url: queryWeather,
+    //  method: "GET",
+
+
+    // }).done(function(weather) {
+    //  console.log(queryWeather);
+    //  console.log(weather);
+    //  });
+
+
+// $.ajax({
+//   url: 'https://maps.googleapis.com/maps/api/js/directions/json?origin=Disneyland&destination=Universal+Studios+Hollywood4&key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0',
+//  // url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0&callback=initMap",
+//  method: "GET",
+//  dataType:"jsonp",
+//  crossOrigin:true
+// }).done(function(response) {
+//  console.log(response);
+//  });
+
+
+// });
+
+// $(document).click(function(){
+//  $("#location").toggle("slide");
+// });
+
+// $(document).ready(function(){
+
+// // var googleMapsKey = "&key=AIzaSyBfQu6oJU6bPRuUyHqpk8HStkK76-cHBN0";
+// // var weatherKey = " 88fa17d19b77bfc5";
+
+// // var origin = "origin=Disneyland&";
+// // var destination ="destination=Universal+Studios+Hollywood4";
+// // var queryURL = "https://maps.googleapis.com/maps/api/directions/json?&"  + origin + destination +  googleMapsKey;
+
 
 
 
