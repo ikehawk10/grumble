@@ -151,6 +151,11 @@ var Zomato = {
             newData.address = response.restaurants[i].restaurant.location.address;
             //add current restaurnt to the info key
             newData.info = response.restaurants[i].restaurant.cuisines;
+
+            newData.lat = response.restaurants[i].restaurant.location.latitude;
+
+            newData.long = response.restaurants[i].restaurant.location.longitude;
+
             //push the new object to the restaurantResults array
             restaurantResults.push(newData);
           } else {
@@ -178,7 +183,7 @@ var Zomato = {
         }
         //function to display contact info on back of 'card'
         function placeOnBack(restaurant, pageElement){
-          pageElement.append("<h3 class='restaurant-address'>" + restaurant.address + "</h3>");
+          pageElement.append("<h3 class='restaurant-address' data-lat='" + restaurant.lat + "' data-long='" + restaurant.long + "'>" + restaurant.address + "</h3>");
         }
         //loop through the new restaurants array
         for (var n = 0; n < restaurantResults.length; n++){
