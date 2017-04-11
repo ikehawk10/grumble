@@ -9,6 +9,7 @@ var u = "https://developers.zomato.com/api/"//starter URL
 var cuisineNotEliminated;
 //set empty array for desired restaurant results later
 var restaurantResults = [];
+var moreRestaurants = [];
 
 var userZIP;
 var mileRadius;
@@ -30,11 +31,11 @@ $("#distance-submit").on("click", function(event) {
 
     getCoords();
 
-    console.log(userZIP);
-    console.log(mileRadius);
-    console.log(userZiplatitude);
-    console.log(userZiplongitude);
+    //convert the miles to search into meters for our API request
+    mileSearch = parseInt(mileRadius) * 1609.34;
+
 });
+
 
 //function to store user input zipcode as lat/long variables
 function getCoords() {
@@ -47,7 +48,6 @@ function getCoords() {
             userZiplongitude = results[0].geometry.location.lng();
             searchLat = userZiplatitude.toString();
             searchLong = userZiplongitude.toString();
-            console.log(typeof(searchLat));
             // console.log("Latitude: " + userZiplatitude + "\nLongitude: " + userZiplongitude);
         } else {
             alert("Request failed.")
@@ -127,14 +127,12 @@ var Zomato = {
           lon: searchLong,
           count: count,
           q: extractString(cuisineNotEliminated),
-          radius: radius,
+          radius: mileSearch,
           sort: "rating",
           order: "desc"
         },
     success:function (response) {
         console.log(response);
-        console.log(searchLat);
-        console.log(searchLong);
         //loop through the JSON response of restaurants
         for (var i = 0; i < response.restaurants.length; i++) {
           //if the current restaurant has a featured image AND a price range that matches the user input...
@@ -155,9 +153,18 @@ var Zomato = {
             newData.info = response.restaurants[i].restaurant.cuisines;
             //push the new object to the restaurantResults array
             restaurantResults.push(newData);
-          } 
-        } console.log(restaurantResults);
-        //function that takes in a restaurant and where to place that restaurant
+          } else {
+            //create an array for non-featured restaurants
+            var otherRestaurants = {};
+            otherRestaurants.name = response.restaurants[i].restaurant.name;
+            otherRestaurants.avgCost = response.restaurants[i].restaurant.average_cost_for_two;
+            otherRestaurants.aggSeat = response.restaurants[i].restaurant.user_rating.aggregate_rating;
+            otherRestaurants.address = response.restaurants[i].restaurant.location.address;
+            otherRestaurants.info = response.restaurants[i].restaurant.cuisines;
+            moreRestaurants.push(otherRestaurants);
+
+          }
+        }        //function that takes in a restaurant and where to place that restaurant
         function placeOnPage(restaurant,pageElement){
               //append the restaurant's image to html node
               pageElement.append("<img class='restaurant-image' src='" + restaurant.image + "'/>");
@@ -180,6 +187,7 @@ var Zomato = {
           //select the specific div we want to append to
           var resultsDiv = $(`#result${newNum}`);
           var resultsBack = $(`#result${newNum}Back`);
+          // var extraResults = $(`#`);
           //run the function that takes in the specific restaurant and places it on the page
           placeOnPage(restaurantResults[n],resultsDiv);
           placeOnBack(restaurantResults[n], resultsBack);
@@ -202,14 +210,12 @@ var coords = {
 
 var radius = 16093.44;
 //max results to return
-var count = 30;
+var count = 10;
 //API key
 Zomato.init("0ed57fbb51db1686778d3291c5a24632");
 //call search options with location, cuisine, and count limit
   $("#pricePoint-submit").on("click", function(){
-    Zomato.search(cuisines, count, radius, scb);
-    console.log(priceSelected.toString());
-    
+    Zomato.search(cuisines, count, radius, scb);    
 }) 
 
 
@@ -250,8 +256,6 @@ $(document).ready(function() {
         speed: 2000,
         timeout: 3500
     });
-
-    console.log("slideshow");
 });
 
 
@@ -346,6 +350,7 @@ $("#flip1").on("dblclick", function(){
     $("#flip1").flip(false);
 })
 
+
 $("#flip2").on("click", function(){
     $("#flip2").flip(true);
 })
@@ -403,6 +408,7 @@ $("#flip3").on("dblclick", function(){
 // // var origin = "origin=Disneyland&";
 // // var destination ="destination=Universal+Studios+Hollywood4";
 // // var queryURL = "https://maps.googleapis.com/maps/api/directions/json?&"  + origin + destination +  googleMapsKey;
+
 
 
 
