@@ -94,10 +94,49 @@ $('.type').click(function() {
   //push the food type to a new array
   eliminated.push($(this).text());
   //create a new array with the food options that are left
-  cuisineNotEliminated = $(cuisineOptions).not(eliminated).get();
+  // cuisineNotEliminated = $(cuisineOptions).not(eliminated).get();
   $(this).toggleClass("picked");
   $(this).toggleClass("unpicked");
+
+
+   // console.log("eliminated== " + eliminated);
+   // console.log("NOT eliminated== " + cuisineNotEliminated);
+ 
+ // new array to eliminate duplicated items
+  var newEliminated = [];
+  // newNotEliminated = $(cuisineOptions).not(newEliminated).get();
+ 
+ $.each(eliminated , function (i, el) {
+     
+     if ($.inArray(el, newEliminated ) === -1) {
+         newEliminated.push(el);
+     } 
+     
+     else {
+         var index = newEliminated.indexOf(el);
+         if(index > -1){
+            newEliminated.splice(index, 1);
+         }
+   
+     }
+  }); 
+  cuisineNotEliminated = $(cuisineOptions).not(newEliminated).get();
+  console.log("NEW eliminated: " + newEliminated);
+ console.log("cusineNotEliminated: " + cuisineNotEliminated);    
 });
+
+
+        
+ // console.log(newEliminated);
+ // console.log(newNotEliminated);
+  // });
+
+
+
+
+// });
+
+
 
 //zomato api call
 var Zomato = {
