@@ -1,563 +1,8 @@
-@font-face {
-    font-family: 'escafinahigh';
-    src: url('escafina-high-webfont.woff2') format('woff2'),
-         url('escafina-high-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-*{
-	box-sizing: border-box;
-}
-body{
-	overflow-x: hidden;
-	font-family: 'Raleway', sans-serif;
-	background-image: url("../images/wood.jpg");
-}
-
-header{
-	display: flex;
-	align-items: center;
-	height: 60px;
-	background-color: #FC913A;
-
-}
-
-
-.logo{
-	 font-family: 'escafinahigh';
-	font-size:45px;
-	background-color: #FC913A;
-	color: #f3ffe2;
-	text-shadow: 2px 2px #6d4532;
-	padding-left: 20px;
-
-}
-
-
-.tagline {
-	font-family: 'Fjalla One', sans-serif;
-	color: #f3ffe2;
-	font-size: 22px;
-	text-shadow: 2px 2px #6d4532;
-	/*align-content: center;
-	padding-top: 10px;*/
-	padding-left: 15px;
-
-}
-
-.container{
-	display: flex;
-}
-
-.aligner{
-	height: 550px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-}
-
-.alignResults{
-	display:flex;
-	height: 550px;
-	justify-content: space-between;
-	
-
-}
-
-.aligner-item{
-	max-width: 70%;
-	display: flex;
-	justify-content: center;
-}
-
-.intro{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	text-align: center;
-	background-color: #f3ffe2;
-	border-radius: 15px;
-	padding: 35px;
-
-}
-
-.intro h2{
-	font-size: 30px;
-	color: #6d4532;
-	font-weight: bold;
-	padding: 5px;
-}
-
-#start{
-	display: flex;
-	flex-direction: column;
-
-	background-color: #FC913A;
-	justify-content: center;
-	align-self: center;
-	border-radius: 50px;
-	margin-top: 20px;
-}
-#start h1{
-
-
-	font-family: 'Fjalla One', sans-serif;
-	color: #f3ffe2;
-	text-shadow: 2px 2px #6d4532;
-	font-size: 35px;
-	padding: 15px;
-
-
-}
-
-#start a{
-	text-decoration: none;
-	cursor: pointer;
-}
-#startScreen, #location, #cuisines{
-	
-	display:flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-#slideshow, img.bgM {
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index:-9999;
-}
-
-/*.positioner{
-	max-width: 970px;
-	margin: 0 auto;
-	align-items: center;
-	justify-content: center;
-}
-*/
-form{
-	display: flex;
-	flex-direction: column;
-
-
-/*	background-color: #FC913A;
-	padding: 100px;
-	border-radius: 20px*/
-}
-
-label{
-	font-weight: bold;
-	font-size: 20px;
-	
-	color: #6d4532;
-}
-
-button{
-	font-family: 'Fjalla One', sans-serif;
-	font-size: 26px
-	
-	
-}
-
-.buttons{
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-/*	align-items: flex-start;*/
-}
-
-
-.btn-submit{
-	background: none;
-	background-color: #f3ffe2;
-	border-width: 1.5px;
-	border-style: solid;
-	border-color: #f3ffe2;
-	color: #FC913A;
-	width: 100px;
-	border-radius: 15px;
-	
-
-}
-
-
-
-.btn-submit:hover, 
-.btn-submit:active,
-.btn-submit:focus,
-.btn-submit:visited	{
-
-		color: #f3ffe2;
-		background-color: #FC913A;
-		border-color: #f3ffe2;
-
-}
-
-.btn-submit-alt{
-	background: none;
-	border-width: 1.5px;
-	border-style: solid;
-	background-color: #FC913A;
-	color: #f3ffe2;
-	width: 100px;
-	border-radius: 15px;
-}
-
-.btn-submit-alt:hover, 
-.btn-submit-alt:active,
-.btn-submit-alt:focus,
-.btn-submi-alt:visited	{
-
-		color: #FC913A;
-		background-color: #f3ffe2;
-		border-color: #FC913A;
-
-}
-
-.prompt{
-	text-align: center;
-	font-size: 35px;
-	font-family: 'Fjalla One', sans-serif;
-	color: #f3ffe2;
-	text-shadow: 2px 2px #6d4532;
-
-	/*margin: 20px;*/
-	/*align-self: flex-start;*/
-}
-
-.promptAlt{
-	text-align: center;
-	font-size: 35px;
-	font-family: 'Fjalla One', sans-serif;
-	color: #FC913A;
-	text-shadow: 2px 2px #6d4532;
-}
-
-#cuisinesInfo h2{
-	text-align: center;
-	font-weight: bold;
-	font-size: 25px;
-	padding-top: 10px;
-	color: #6d4532;
-}
-
-#priceInfo h2{
-	text-align: center;
-	font-weight: bold;
-	font-size: 25px;
-	padding-top: 10px;
-	color: #6d4532;
-
-
-}
-
-#locationInfo{
-	display: flex;
-	flex-direction: column;
-	background-color: #FC913A;
-	padding: 25px;
-	border-radius: 20px
-
-}
-
-
-#cuisines, #location, #pricePoint{
-	
-	display: flex;
-	flex-direction: column;
-
-
-}
-
-#cuisinesInfo{
-		display: flex;
-		flex-direction: column;
-		background-color: #f3ffe2;
-		padding: 25px;
-		border-radius: 20px;
-}
-
-#elimination-list{
-	display: flex;
-	flex-wrap: wrap;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	font-family: 'Raleway', sans-serif;
-	/*background-color: #f3ffe2;*/
-	border-radius: 5px;
-	height: 250px;
-	padding: 15px;
-	width: 600px;
-	/*padding-top: 0px;*/
-}
-#elimination-list li{
-	
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: 'Fjalla One', sans-serif;
-	font-size: 20px;
-	/*margin-top: 10px;*/
-	padding: 10px 5px;
-	width: 100px;
-	height: 100px;
-	
-	border-radius: 15px;
-	text-align: center;
-	
-	border-style: solid;
-	border-width: 1px;
-	border-color: #6d4532;
-
-}
-
-.picked{
-	background-color: #FC913A;
-	color: #f3ffe2;
-}
-
-.unpicked{
-	background-color: #f3ffe2;
-	color: #FC913A;
-	text-decoration: line-through;
-}
-
-
-
-
-#howMuch{
-	display: flex;
-	flex-direction: column;
-}
-
-
-#priceInfo{
-		display: flex;
-		flex-direction: column;
-		background-color: #FC913A;
-		padding: 25px;
-		border-radius: 20px;
-
-}
-
-#dollaSigns{
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-}
-
-#priceInfo ul{
-	padding: 20px;
-}
-
-#dollaSigns li{
-	font-family: 'Fjalla One', sans-serif;
-	
-	font-size: 25px;
-	padding: 15px;
-	
-	border-radius: 15px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #6d4532;
-}
-
-.priceUnpicked{
-	background-color: #FC913A;
-	color: #f3ffe2;
-
-	
-}
-
-.pricePicked{
-	background-color: #f3ffe2;
-	color: #FC913A;
-	text-decoration: line-through;
-	
-	
-}
-
-
-#results{
-	margin-top: 0px;
-}
-#resultsInfo{
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-	justify-content: space-around;
-
-	margin: 0;
-	padding: 0;
-	
-	
-
-}
-
-#resultsInfo div {
-	
-	/*height: 525px;*/
-	width: 400px;
-
-	
-
-
-
-	
-
-}
-#result1, #results1Back{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: #f3ffe2;
-	margin: 10px;
-	border-radius: 15px;
-	
-
-}
-
-#result2, #results2Back{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: #f3ffe2;
-	margin: 10px;
-	border-radius: 15px;
-	
-	
-}
-
-#result3, #results3Back{
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: #f3ffe2;
-	margin: 10px;
-	border-radius: 15px;
-	
-	
-}
-
-
-
-.flipper{
-	display: flex;
-	display: -moz-box;
-	display: -ms-flexbox;
-	display: -webkit-box;
-	display: -webkit-flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	height: 525px;
-	width: 100%;
-	margin: 0px;
-	margin-left: -20px;
-	padding: 0px;
-
-
-}
-
-/*.card-front,
-.card-back {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	padding: 0px;
-	margin: 0;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	-webkit-transition: -webkit-transform 0.3s;
-	transition: transform 0.3s;
-	justify-content: flex-end;
-}
-
-.card-back{
-	-webkit-transform: rotateY(-180deg);
-	transform: rotateY(-180deg);
-}
-
-.flex-item:hover .card-front {
-	-webkit-transform: rotateY(-180deg);
-	transform: rotateY(-180deg);
-}
-.flex-item:hover .card-back {
-	-webkit-transform: rotateY(0);
-	transform: rotateY(0);
-}
-
-*/
-.restaurant-image{
-    width: 100%;
-    max-height: 350px;
-    min-height: 350px;
-    border-top: 20px solid #f3ffe2;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
-	
-	/*border: 3px solid black;*/
-}
-
-.restaurant-title,
-.restaurant-price,
-.restaurant-rating,
-.restaurant-address{
-	text-align: center;
-	padding: 10px 0px 10px 0px;
-	color: #6d4532;
-	
-}
-
-.restaurant-title{
-	font-size: 25px;
-	font-weight: bold;
-}
-
-.restaurant-address{
-	font-size: 18px;
-	padding: 10px;
-}
-
-
-.back{
-	width: 100%;
-	height: 525px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: #f3ffe2;
-	margin: 10px;
-	border-radius: 15px;
-
-/*.grumbleHeader{
-	background-color: #FC913A;
-}*/
-
-
 /*
 *******************************BOOTSTRAP BUTTONS*********************
 */
 
-.btn {
+/*.btn {
 
 	width: 100px;
   display: inline-block;
@@ -920,4 +365,844 @@ input[type="submit"].btn-block,
 input[type="reset"].btn-block,  
 input[type="button"].btn-block {  
   width: 100%;
+}*/
+
+
+
+
+
+@font-face {
+    font-family: 'escafinahigh';
+    src: url('escafina-high-webfont.woff2') format('woff2'),
+         url('escafina-high-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
+
+*{
+	box-sizing: border-box;
+}
+body{
+	overflow-x: hidden;
+	font-family: 'Raleway', sans-serif;
+	background-image: url("../images/wood.jpg");
+	/*background-size: cover;
+	background-repeat: no-repeat;*/
+}
+
+header{
+	display: flex;
+	align-items: center;
+	height: 60px;
+	width: 100%;
+	background-color: #FC913A;
+	
+
+
+}
+
+
+.logo{
+	 font-family: 'escafinahigh';
+	font-size:45px;
+	background-color: #FC913A;
+	color: #f3ffe2;
+	text-shadow: 2px 2px #6d4532;
+	padding-left: 20px;
+
+}
+
+
+.tagline {
+	font-family: 'Fjalla One', sans-serif;
+	color: #f3ffe2;
+	font-size: 22px;
+	text-shadow: 2px 2px #6d4532;
+	/*align-content: center;
+	padding-top: 10px;*/
+	padding-left: 15px;
+
+}
+
+.container{
+	display: flex;
+}
+
+.aligner{
+	height: 550px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.alignResults{
+	display:flex;
+	height: 550px;
+	justify-content: space-between;
+	
+
+}
+
+.aligner-item{
+	max-width: 70%;
+	display: flex;
+	justify-content: center;
+}
+
+.intro{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	background-color: #f3ffe2;
+	border-radius: 15px;
+	padding: 35px;
+
+}
+
+.intro h2{
+	font-size: 30px;
+	color: #6d4532;
+	font-weight: bold;
+	padding: 5px;
+}
+
+#start{
+	display: flex;
+	flex-direction: column;
+
+	background-color: #FC913A;
+	justify-content: center;
+	align-self: center;
+	border-radius: 50px;
+	margin-top: 20px;
+}
+#start h1{
+
+
+	font-family: 'Fjalla One', sans-serif;
+	color: #f3ffe2;
+	text-shadow: 2px 2px #6d4532;
+	font-size: 35px;
+	padding: 15px;
+
+
+}
+
+#start a{
+	text-decoration: none;
+	cursor: pointer;
+}
+#startScreen, #location, #cuisines{
+	
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#slideshow, img.bgM {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:-9999;
+}
+
+/*.positioner{
+	max-width: 970px;
+	margin: 0 auto;
+	align-items: center;
+	justify-content: center;
+}
+*/
+form{
+	display: flex;
+	flex-direction: column;
+
+
+/*	background-color: #FC913A;
+	padding: 100px;
+	border-radius: 20px*/
+}
+
+label{
+	font-weight: bold;
+	font-size: 20px;
+	
+	color: #6d4532;
+}
+
+button{
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 26px
+	/*margin: 0px 5px 0px 5px;*/
+	
+	
+}
+
+.btn{
+	margin-left: 5px;
+}
+
+.buttons{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+/*	align-items: flex-start;*/
+}
+
+
+.btn-submit{
+	background: none;
+	background-color: #f3ffe2;
+	border-width: 1.5px;
+	border-style: solid;
+	border-color: #f3ffe2;
+	color: #FC913A;
+	width: 100px;
+	border-radius: 15px;
+	
+
+}
+
+
+
+.btn-submit:hover, 
+.btn-submit:active,
+.btn-submit:focus,
+.btn-submit:visited	{
+
+		color: #f3ffe2;
+		background-color: #FC913A;
+		border-color: #f3ffe2;
+
+}
+
+.btn-submit-alt{
+	background: none;
+	border-width: 1.5px;
+	border-style: solid;
+	background-color: #FC913A;
+	color: #f3ffe2;
+	width: 100px;
+	border-radius: 15px;
+}
+
+.btn-submit-alt:hover, 
+.btn-submit-alt:active,
+.btn-submit-alt:focus,
+.btn-submi-alt:visited	{
+
+		color: #FC913A;
+		background-color: #f3ffe2;
+		border-color: #FC913A;
+
+}
+
+.prompt{
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Fjalla One', sans-serif;
+	color: #f3ffe2;
+	text-shadow: 2px 2px #6d4532;
+
+	/*margin: 20px;*/
+	/*align-self: flex-start;*/
+}
+
+.promptAlt{
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Fjalla One', sans-serif;
+	color: #FC913A;
+	text-shadow: 2px 2px #6d4532;
+}
+
+#cuisinesInfo h2{
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	padding-top: 10px;
+	color: #6d4532;
+}
+
+#priceInfo h2{
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	padding-top: 10px;
+	color: #6d4532;
+
+
+}
+
+#locationInfo{
+	display: flex;
+	flex-direction: column;
+	background-color: #FC913A;
+	padding: 25px;
+	border-radius: 20px
+
+}
+
+
+#cuisines, #location, #pricePoint{
+	
+	display: flex;
+	flex-direction: column;
+
+
+}
+
+#cuisinesInfo{
+		display: flex;
+		flex-direction: column;
+		background-color: #f3ffe2;
+		padding: 25px;
+		border-radius: 20px;
+		max-width: 600px;
+		min-width: 375px;
+}
+
+#elimination-list{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	font-family: 'Raleway', sans-serif;
+	/*background-color: #f3ffe2;*/
+	border-radius: 5px;
+	height: 100%;
+	padding: 15px;
+	width: 100%;
+	/*padding-top: 0px;*/
+}
+#elimination-list li{
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 20px;
+	/*margin-top: 10px;*/
+	padding: 10px 5px;
+	width: 100px;
+	height: 100px;
+	
+	border-radius: 15px;
+	text-align: center;
+	
+	border-style: solid;
+	border-width: 1px;
+	border-color: #6d4532;
+
+}
+
+.picked{
+	background-color: #FC913A;
+	color: #f3ffe2;
+}
+
+.unpicked{
+	background-color: #f3ffe2;
+	color: #FC913A;
+	text-decoration: line-through;
+}
+
+
+
+
+#howMuch{
+	display: flex;
+	flex-direction: column;
+}
+
+
+#priceInfo{
+		display: flex;
+		flex-direction: column;
+		background-color: #FC913A;
+		padding: 25px;
+		border-radius: 20px;
+
+}
+
+#dollaSigns{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+}
+
+#priceInfo ul{
+	padding: 20px;
+}
+
+#dollaSigns li{
+	font-family: 'Fjalla One', sans-serif;
+	
+	font-size: 25px;
+	padding: 15px;
+	
+	border-radius: 15px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #6d4532;
+}
+
+.priceUnpicked{
+	background-color: #FC913A;
+	color: #f3ffe2;
+
+	
+}
+
+.pricePicked{
+	background-color: #f3ffe2;
+	color: #FC913A;
+	text-decoration: line-through;
+	
+	
+}
+
+#topResultsBanner{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#topResultsBanner h1{
+	font-size: 34px;
+	font-family: 'Fjalla One', sans-serif; 
+	color: #f3ffe2;
+	text-shadow: 2px 2px #6d4532;
+	margin-top: 10px;
+	margin-bottom: -15px;
+}
+
+
+#results{
+	margin-top: 0px;
+}
+#resultsInfo{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-around;
+
+	margin: 0;
+	padding: 0;
+	
+	
+
+}
+
+#resultsInfo div {
+	
+	/*height: 525px;*/
+	width: 400px;
+
+	margin: 10px 0px 10px 0px;
+
+	
+
+
+
+	
+
+}
+#result1, #results1Back{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f3ffe2;
+	margin: 10px;
+	border-radius: 15px;
+	
+
+}
+
+#result2, #results2Back{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f3ffe2;
+	margin: 10px;
+	border-radius: 15px;
+	
+	
+}
+
+#result3, #results3Back{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f3ffe2;
+	margin: 10px;
+	border-radius: 15px;
+	
+	
+}
+
+#result1, #result1Back h4{
+	padding-top: 5px;
+	color: #6d4532;
+}
+
+
+#result2, #result2Back h4{
+	padding-top: 5px;
+	color: #6d4532;
+}
+
+
+#result3, #result3Back h4{
+	padding-top: 5px;
+	color: #6d4532;
+}
+
+
+
+
+.flipper{
+	display: flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-box;
+	display: -webkit-flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 525px;
+	width: 100%;
+	margin: 0px;
+	margin-left: -20px;
+	padding: 0px;
+
+
+}
+
+/*.card-front,
+.card-back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	justify-content: flex-end;
+}
+
+.card-back{
+	-webkit-transform: rotateY(-180deg);
+	transform: rotateY(-180deg);
+}
+
+.flex-item:hover .card-front {
+	-webkit-transform: rotateY(-180deg);
+	transform: rotateY(-180deg);
+}
+.flex-item:hover .card-back {
+	-webkit-transform: rotateY(0);
+	transform: rotateY(0);
+}
+
+*/
+.restaurant-image{
+    width: 100%;
+    max-height: 65%;
+    
+    /*border-top: 20px solid #f3ffe2;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;*/
+	
+	/*border: 3px solid black;*/
+}
+
+.restaurant-title,
+.restaurant-price,
+.restaurant-rating,
+.restaurant-address{
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	color: #6d4532;
+	
+}
+
+.restaurant-title{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.restaurant-address{
+	font-size: 18px;
+	padding: 10px;
+}
+
+
+.back{
+	width: 100%;
+	height: 525px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f3ffe2;
+	margin: 10px;
+	border-radius: 15px;
+
+}
+/*.grumbleHeader{
+	background-color: #FC913A;
+}*/
+
+
+
+/***************MEDIA QUERIES*****************/
+
+
+@media (max-width: 1250px){
+
+	body {
+		width: 100%;
+	}
+
+		.aligner{
+		height: 80%;
+		margin-top: 15px;
+	}
+
+	/*.aligner{
+		height: 80%;
+		flex-direction: column;
+		align-content: center;
+		justify-content: center;
+	}*/
+
+	#results{
+		margin-top: 15px;
+	}
+
+	#resultsInfo{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#resultsInfo div{
+		width: 65%;
+		min-width: 375px;
+	}
+	
+	#cuisinesInfo{
+		max-width: 600px;
+	}
+}
+
+
+@media (max-width: 768px){
+
+		body {
+		width: 100%;
+	}
+
+	header{
+		flex-direction: row;
+		justify-content: center;
+		height: 65px;
+	}
+
+	.grumbleHeader{
+		height: 95px;
+	}
+
+	.logo{
+		font-size: 75px
+	}
+
+	.aligner{
+		height: 80%;
+		margin-top: 15px;
+	}
+
+	.intro{
+		margin: 0px 10px 0px 10px;
+	}
+
+	#start h1{
+		width: 100%;
+	}
+
+	#cuisinesInfo{
+		max-width: 600px;
+	}
+
+	#priceInfo{
+		margin: 0px 10px 0px 10px;
+	}
+
+	#results{
+		margin-top: 5px;
+	}
+		#resultsInfo{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#resultsInfo div{
+		width: 85%;
+		min-width: 375px;
+	}
+
+
+	
+}
+
+
+
+@media (max-width: 640px){
+
+		body {
+		width: 100%;
+		height: 100%;
+	}
+
+	header{
+		flex-direction: row;
+		justify-content: center;
+		height: 65px;
+	}
+
+	.grumbleHeader{
+		height: 95px;
+	}
+
+	.logo{
+		font-size: 75px;
+	}
+
+	.tagline{
+		padding-left: 5px;
+	}
+
+	.aligner{
+		height: 80%;
+		margin-top: 15px;file:///C:/Users/steph/Desktop/code/grumble/assets/images/b1.jpg
+	}
+
+	.intro{
+		margin: 0px 10px 0px 10px;
+	}
+
+	#start h1{
+		width: 100%;
+	}
+
+	#locationInfo{
+		min-width: 375px;
+		margin: 0px 10px 0px 10px;
+	}
+
+	#cuisinesInfo{
+		max-width: 100%;
+		margin: 0px 10px 0px 10px;
+	}
+
+	#results{
+		margin-top: 5px;
+	}
+		#resultsInfo{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#resultsInfo div{
+		width: 85%;
+		min-width: 375px;
+	}
+	
+}
+}
+
+
+@media (max-width: 400px){
+
+		body {
+		width: 100%;
+	}
+
+	header{
+		flex-direction: row;
+		justify-content: center;
+		height: 65px;
+	}
+
+	.grumbleHeader{
+		height: 95px;
+	}
+
+	.logo{
+		font-size: 75px
+	}
+
+	.aligner{
+		height: 80%;
+		margin-top: 15px;file:///C:/Users/steph/Desktop/code/grumble/assets/images/b1.jpg
+	}
+
+	.intro{
+		margin: 0px 10px 0px 10px;
+	}
+
+	#start h1{
+		width: 100%;
+	}
+
+	#locationInfo{
+		min-width: 375px;
+		margin: 0px 10px 0px 10px;
+	}
+
+	#cuisinesInfo{
+		max-width: 90%;
+	}
+
+	#results{
+		margin-top: 5px;
+	}
+		#resultsInfo{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#resultsInfo div{
+		width: 85%;
+		min-width: 375px;
+	}
+	.buttons{
+		justify-content: space-between;
+	}
+}
+}
+
+
+
+
+

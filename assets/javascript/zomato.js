@@ -247,6 +247,7 @@ $(document).ready(function() {
     $("#cuisines").hide();
     $("#pricePoint").hide();
     $("#results").hide();
+    $("#topResultsBanner").hide();
    
 
     // $("#slideshow").hide();
@@ -301,7 +302,9 @@ $("#cuisines-back").on("click", function(event){
 $("#pricePoint-submit").on("click", function(event) {
     event.preventDefault();
     $("#pricePoint").toggle("slide");
+    $("#topResultsBanner").toggle("slide");
     $("#results").toggle("slide");
+    $("#topResultsBanner").show();
     $("#results").show();
     initMap();
     // initMap(map2);
