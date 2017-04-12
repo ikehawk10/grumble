@@ -62,11 +62,27 @@ function getCoords() {
 var priceSelected = new Array();
   $('.price').click(function() {
     //user selects what price point they want to search for
+
+    // console.log("index: " + priceSelected.indexOf($(this).val()));
+    if(priceSelected.indexOf($(this).val()) === 0) {
+      // console.log("met condition");
+         $(this).toggleClass("priceUnpicked");
+         priceSelected = [];
+         
+    }
+
+    else if (priceSelected.indexOf($(this).val()) === -1 && priceSelected.length === 0){
+     $(this).toggleClass("pricePicked");
      priceSelected.push($(this).val());
 
-  $(this).toggleClass("pricePicked");
-  $(this).toggleClass("priceUnpicked");
-})
+    }
+    
+ 
+console.log(priceSelected);
+  // $(this).toggleClass("pricePicked");
+  // $(this).toggleClass("priceUnpicked");
+  
+});
 
 $(document).ready(function() {
     $("#zip-input").keypress(function(event) {
