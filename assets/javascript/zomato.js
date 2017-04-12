@@ -1,7 +1,10 @@
 var userZiplatitude = "";
 var userZiplongitude = "";
-var restLat = "";
-var restLng = "";
+var userLatLong = "";
+var pins = [];
+var pin1 = "";
+var pin2 = "";
+var pin3 = "";
 $(document).ready(function(){
 var zheader,version,url;
 var u = "https://developers.zomato.com/api/"//starter URL
@@ -16,11 +19,13 @@ var mileRadius;
 
 var searchLat = "";
 var searchLong = "";
-var map1;
-var map2;
-var map3;
+var pin1 = $("#result1Back > h3").attr("data-lat", "data-long");   
+
+
 
 getCoords();
+
+
 $("#distance-submit").on("click", function(event) {
     event.preventDefault();
     userZIP = $("#zip-input").val().trim();
@@ -237,8 +242,10 @@ var Zomato = {
               pageElement.append("<p class='restaurant-info'>Cuisine Type: " + restaurant.info + "</p>");
         }
         //function to display contact info on back of 'card'
-        function placeOnBack(restaurant, pageElement){
-          pageElement.append("<h3 class='restaurant-address' data-lat='" + restaurant.lat + "' data-long='" + restaurant.long + "'>" + restaurant.address + "</h3>");
+        function placeOnBack(restaurant, pageElement, i){
+          pins[i] = $("<h3 class='restaurant-address' data-lat='" + restaurant.lat + "' data-long='" + restaurant.long + "'>" + restaurant.address + "</h3>");
+            
+            pageElement.append(pins[i]);
         }
         //loop through the new restaurants array
         for (var n = 0; n < restaurantResults.length; n++){
@@ -249,9 +256,11 @@ var Zomato = {
           var resultsBack = $(`#result${newNum}Back`);
           // var extraResults = $(`#`);
           //run the function that takes in the specific restaurant and places it on the page
-          placeOnPage(restaurantResults[n],resultsDiv);
-          placeOnBack(restaurantResults[n], resultsBack);
+          placeOnPage(restaurantResults[n], resultsDiv);
+          placeOnBack(restaurantResults[n], resultsBack, n);
         }
+
+         initMap();
       },  
       //error message function
         error:function (res) {
@@ -361,31 +370,95 @@ $("#pricePoint-submit").on("click", function(event) {
     $("#results").toggle("slide");
     $("#topResultsBanner").show();
     $("#results").show();
-    initMap();
+   
     // initMap(map2);
     // initMap(map3);
     // console.log(initMap());
     
 });
 
-var marker; 
-
-function initMap(){
+function initMap() {
     // Create a div to hold the control.
-    console.log(userZiplongitude + userZiplatitude);
-    var userLatLong = { lat: parseFloat(userZiplatitude), lng: parseFloat(userZiplongitude) }
-    var myOptions = {
-        mapTypeId: google.maps.MapTypeId.ROADMAP, 
-        center: new google.maps.LatLng(userLatLong),
-        zoom: 15,
-        disableDefaultUI: true}
-     
-        map1 = new google.maps.Map(document.getElementById("map1"),myOptions);
-        map2 = new google.maps.Map(document.getElementById("map2"),myOptions);
-        map3 = new google.maps.Map(document.getElementById("map3"),myOptions);
+   
+    
 
-        
+    userLatLong = { lat: parseFloat(userZiplatitude), lng: parseFloat(userZiplongitude) }
+    console.dir(userLatLong);
+    var myLatlng = new google.maps.LatLng(userLatLong);
+
+     pin1 = { lat: parseFloat(pins[0].attr("data-lat")), lng: parseFloat(pins[0].attr("data-long"))};
+     var myPin1 = new google.maps.LatLng(pin1);
+     pin2 = { lat: parseFloat(pins[1].attr("data-lat")), lng: parseFloat(pins[1].attr("data-long"))};
+     var myPin2 = new google.maps.LatLng(pin2);
+     
+     pin3 = { lat: parseFloat(pins[2].attr("data-lat")), lng: parseFloat(pins[2].attr("data-long"))};
+     var myPin3 = new google.maps.LatLng(pin3);
+
+
+    var mapOptions1 = {
+        zoom: 15,
+        center: myPin1,
+        disableDefaultUI: true
+    };
+
+      var mapOptions2 = {
+        zoom: 15,
+        center: myPin2,
+        disableDefaultUI: true
+    };
+
+      var mapOptions3 = {
+        zoom: 15,
+        center: myPin3,
+        disableDefaultUI: true
+    };
+    var map1 = new google.maps.Map(document.getElementById("map1"),mapOptions1);
+    var map2 = new google.maps.Map(document.getElementById("map2"),mapOptions2);
+    var map3 = new google.maps.Map(document.getElementById("map3"),mapOptions3);
+    // pin1Lat = $('#result1Back').children('.restauraunt-address');
+
+    //for(i < 0 pins.length)
+
+    console.log(pins[0].attr("data-lat"));
+    console.log(pins[0].attr("data-long"));
+
+    console.log(pins[1].attr("data-lat"));
+    console.log(pins[1].attr("data-long"));
+
+    console.log(pins[2].attr("data-lat"));
+    console.log(pins[2].attr("data-long"));
+
+
+    //var pin1Lat= $('#result1Back < h3').attr('data-lat');
+ 
+    //var pin1Long= $('#result1Back > h3').data('long');
+   
+   // var pin1drop={lat: parseFloat(pin1Lat), lng: parseFloat(pin1Long)}
+    //console.log(pin1drop);
+
+    var marker1 = new google.maps.Marker({
+        position: myPin1,
+        title: "Hello World!"
+    });
+   
+    var marker2 = new google.maps.Marker({
+        position: myPin2,
+        title: "Hello World!"
+    });
+    
+    var marker3 = new google.maps.Marker({
+        position: myPin3,
+        title: "Hello World!"
+    });
+
+    // To add the marker to the map, call setMap();
+    marker1.setMap(map1);
+    marker2.setMap(map2);
+    marker3.setMap(map3);
+
+
 };
+
 
 $("#pricePoint-back").on("click", function(event){
   // $(".picked").empty();
