@@ -21,7 +21,7 @@ var searchLat = "";
 var searchLong = "";
 var pin1 = $("#result1Back > h3").attr("data-lat", "data-long");   
 
-
+// $("#distance-submit").hide();
 
 getCoords();
 
@@ -89,10 +89,40 @@ console.log(priceSelected);
   
 });
 
+
+//hide the distance submit button unless user has entered 5 characters. 
+  //buggy
+
+  
+// $("#zip-input").on("keyup", function(event){
+    
+//    var zipFull = false;
+
+//    $("#zip-input").each(function(){
+//       if ($(this).val().length >= 5){
+//         zipFull = true;
+//       }
+//    });
+
+
+
+//   if(zipFull){
+//     $("#distance-submit").toggle("slide");
+//     $("#distance-submit").show();
+//   }else{
+//     $("#distance-submit").hide();
+//   }
+// });
+
+
 $(document).ready(function() {
+    
     $("#zip-input").keypress(function(event) {
         return /\d/.test(String.fromCharCode(event.keyCode));
+        
     });
+
+  
   });
 //create a function that takes in an array
 function extractString(array){
@@ -312,10 +342,14 @@ $(document).ready(function() {
     $("#pricePoint").hide();
     $("#results").hide();
     $("#topResultsBanner").hide();
+    $("#buttonBox").hide();
    
 
-    // $("#slideshow").hide();
 });
+
+$("#header").on("click", function(){
+  location.reload();
+})
 
 //This is what causes the background slideshow on page load could be merged into above function. 
 $(document).ready(function() {
@@ -336,7 +370,7 @@ $("#start").on("click", function(event) {
     $("#startScreen").toggle("slide");
     $("#location").toggle("slide");
     $("#location").show();
-    $("#slideshow").hide();
+    
 
 });
 
@@ -370,7 +404,10 @@ $("#pricePoint-submit").on("click", function(event) {
     $("#results").toggle("slide");
     $("#topResultsBanner").show();
     $("#results").show();
-   
+    $("#slideshow").hide();
+    $("#buttonBox").toggle("slide");
+    $("#buttonBox").show();
+
     // initMap(map2);
     // initMap(map3);
     // console.log(initMap());
@@ -388,11 +425,7 @@ function initMap() {
 
      pin1 = { lat: parseFloat(pins[0].attr("data-lat")), lng: parseFloat(pins[0].attr("data-long"))};
      var myPin1 = new google.maps.LatLng(pin1);
-     pin2 = { lat: parseFloat(pins[1].attr("data-lat")), lng: parseFloat(pins[1].attr("data-long"))};
-     var myPin2 = new google.maps.LatLng(pin2);
-     
-     pin3 = { lat: parseFloat(pins[2].attr("data-lat")), lng: parseFloat(pins[2].attr("data-long"))};
-     var myPin3 = new google.maps.LatLng(pin3);
+    
 
 
     var mapOptions1 = {
@@ -400,21 +433,47 @@ function initMap() {
         center: myPin1,
         disableDefaultUI: true
     };
+    var map1 = new google.maps.Map(document.getElementById("map1"),mapOptions1);
 
+    var marker1 = new google.maps.Marker({
+        position: myPin1,
+        title: "Hello World!"
+    });
+    marker1.setMap(map1);
+ 
+
+    pin2 = { lat: parseFloat(pins[1].attr("data-lat")), lng: parseFloat(pins[1].attr("data-long"))};
+     var myPin2 = new google.maps.LatLng(pin2);
+    
       var mapOptions2 = {
         zoom: 15,
         center: myPin2,
         disableDefaultUI: true
     };
+    var map2 = new google.maps.Map(document.getElementById("map2"),mapOptions2);
+       var marker2 = new google.maps.Marker({
+        position: myPin2,
+        title: "Hello World!"
+    });
+       marker2.setMap(map2);
+
+     pin3 = { lat: parseFloat(pins[2].attr("data-lat")), lng: parseFloat(pins[2].attr("data-long"))};
+     var myPin3 = new google.maps.LatLng(pin3);
 
       var mapOptions3 = {
         zoom: 15,
         center: myPin3,
         disableDefaultUI: true
     };
-    var map1 = new google.maps.Map(document.getElementById("map1"),mapOptions1);
-    var map2 = new google.maps.Map(document.getElementById("map2"),mapOptions2);
-    var map3 = new google.maps.Map(document.getElementById("map3"),mapOptions3);
+        
+      var map3 = new google.maps.Map(document.getElementById("map3"),mapOptions3);
+
+        var marker3 = new google.maps.Marker({
+        position: myPin3,
+        title: "Hello World!"
+    });
+        marker3.setMap(map3);
+
     // pin1Lat = $('#result1Back').children('.restauraunt-address');
 
     //for(i < 0 pins.length)
@@ -436,26 +495,15 @@ function initMap() {
    // var pin1drop={lat: parseFloat(pin1Lat), lng: parseFloat(pin1Long)}
     //console.log(pin1drop);
 
-    var marker1 = new google.maps.Marker({
-        position: myPin1,
-        title: "Hello World!"
-    });
+
    
-    var marker2 = new google.maps.Marker({
-        position: myPin2,
-        title: "Hello World!"
-    });
-    
-    var marker3 = new google.maps.Marker({
-        position: myPin3,
-        title: "Hello World!"
-    });
+   
+
 
     // To add the marker to the map, call setMap();
-    marker1.setMap(map1);
-    marker2.setMap(map2);
-    marker3.setMap(map3);
-
+    
+   
+    
 
 };
 
@@ -502,6 +550,12 @@ $("#flip3").on("click", function(){
 $("#flip3").on("dblclick", function(){
     $("#flip3").flip(false);
 })
+
+
+$("#startOver").on("click", function(){
+  location.reload();
+})
+
 //Weather API for later
 
 //Calls the Wunderground API to pull weather info as a json response for user's zipcode
